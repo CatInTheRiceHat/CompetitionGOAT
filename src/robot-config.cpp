@@ -19,8 +19,8 @@ motor_group L = motor_group(ml, bl, fl);
 motor_group R = motor_group(mr, br, fr);
 motor intake = motor(PORT19, ratio6_1, false);
 motor kicker = motor(PORT8, ratio36_1, false);
-digital_out wings = digital_out(Brain.ThreeWirePort.A);
-digital_out blocker = digital_out(Brain.ThreeWirePort.B);
+pneumatics wings = pneumatics(Brain.ThreeWirePort.A);
+pneumatics blocker = pneumatics(Brain.ThreeWirePort.B);
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable

@@ -14,8 +14,8 @@ extern motor_group L;
 extern motor_group R;
 extern motor intake;
 extern motor kicker;
-extern digital_out wings;
-extern digital_out blocker;
+extern pneumatics wings;
+extern pneumatics blocker;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
