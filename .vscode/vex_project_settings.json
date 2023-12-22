@@ -1,0 +1,18 @@
+{
+	"project": {
+		"name": "CompetitionGOAT",
+		"slot": 1,
+		"description": "Git Gud",
+		"platform": "V5",
+		"creationDate": "Sat, 28 Oct 2023 03:50:12 GMT",
+		"language": "cpp",
+		"sdkVersion": "V5_20220726_10_00_00",
+		"cpp": {
+			"includePath": []
+		}
+	},
+	"extension": {
+		"version": "0.5.0",
+		"json": 1
+	}
+}

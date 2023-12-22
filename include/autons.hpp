@@ -1,0 +1,5 @@
+#include "../autons/auton1.hpp"
+#include "../autons/auton2.hpp"
+#include "../autons/auton3.hpp"
+#include "../autons/auton4.hpp"
+#include "../autons/auton5.hpp"

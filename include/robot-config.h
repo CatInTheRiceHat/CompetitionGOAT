@@ -1,0 +1,23 @@
+using namespace vex;
+
+extern brain Brain;
+
+// VEXcode devices
+extern controller asian;
+extern motor fr;
+extern motor mr;
+extern motor br;
+extern motor fl;
+extern motor ml;
+extern motor bl;
+extern motor intake;
+extern motor kicker;
+extern digital_out wings;
+extern digital_out blocker;
+
+/**
+ * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
+ * 
+ * This should be called at the start of your int main function.
+ */
+void  vexcodeInit( void );
