@@ -3,10 +3,8 @@
 #include <cstring>
 #include <string.h>
 #include "vex.h"
+#include "functions.hpp"
 #include "autons.hpp"
-#include "driver.hpp"
-#include "pid.hpp"
-#include "pre-auton.hpp"
 
 using namespace vex;
 

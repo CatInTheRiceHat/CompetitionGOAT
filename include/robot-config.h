@@ -10,6 +10,8 @@ extern motor br;
 extern motor fl;
 extern motor ml;
 extern motor bl;
+extern motor_group L;
+extern motor_group R;
 extern motor intake;
 extern motor kicker;
 extern digital_out wings;

@@ -1,7 +1,3 @@
-#include <iostream>
-#include "stdarg.h"
-#include <cstring>
-#include <string.h>
 #include "vex.h"
 
 void auton4() { //Works 70% of the time
