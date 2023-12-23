@@ -16,6 +16,7 @@ extern motor intake;
 extern motor kicker;
 extern pneumatics wings;
 extern pneumatics blocker;
+extern inertial inert;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.

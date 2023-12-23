@@ -1,8 +1,6 @@
 #include "vex.h"
 #include "pid.hpp"
 
-using namespace vex;
-
 double π = atan(1) * 4; //defining pi using the symbol because im cool
 double ws = 3.25; //wheel diameter in inches
 
@@ -15,10 +13,11 @@ Set kP to about half of the value causing steady oscillation.
 
 Increase kD until any overshoot is acceptable. Overshoot is when the robot moves past the target distance before coming back. Increasing kD will reduce the overshoot, but making kD too large can lead to a sluggish response.
 
-Increase kI until the robot reaches the target distance in a reasonable time during steady state. Steady state is when the robot is not being subjected to any disturbances or changes in the target distance. Be careful with increasing kI, as too large a value can cause instability.*/
+Increase kI until the robot reaches the target distance in a reasonable time during steady state. Steady state is when the robot is not being subjected to any disturbances or changes in the target distance. Be careful with increasing kI, as too large a value can cause instability.
+*/
 
 //PID constants
-double kP = 0.0; //kP is the constant for proportional control
+double kP = 0.1; //kP is the constant for proportional control
 double kI = 0.0; //kI is the constant for integral control
 double kD = 0.0; //kD is the constant for derivative control
 
@@ -88,15 +87,14 @@ void drivetrainPID(double targetDistance, double targetOrientation, double dista
 //pure pursuit with odometry
 void travel(double distance, double angle) {
     //Get current distance sensor value
-    double currentDistance = D.position(turns) * π * ws;
-
+    double currentDistance = (L.position(turns) + R.position(turns) / 2) * π * ws;
     //Get current orientation sensor value
     double currentOrientation = inert.yaw();
 
     //Move forward
     while (fabs(distance - currentDistance) > 0.1) {
         drivetrainPID(distance, currentOrientation, currentDistance, currentOrientation);
-        currentDistance = D.position(turns) * π * ws;
+        currentDistance = (L.position(turns) + R.position(turns) / 2) * π * ws;
     }
 
     //Turn
