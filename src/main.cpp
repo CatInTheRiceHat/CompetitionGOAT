@@ -15,19 +15,17 @@ competition Competition;
 void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
+  Inertial();
   AutonSelector();
 }
 
-void autonomous(void) {
-  //enabledrivePID = true;
-
-  //drivePID(1000,0);
-  
+void autonomous(void) {  
   if (display == 1) {auton1();}
   if (display == 2) {auton2();}
   if (display == 3) {auton3();}
   if (display == 4) {auton4();}
   if (display == 5) {auton5();}
+  asian.Screen.setCursor(1, 1);
   asian.Screen.print("Done");
 }
 

@@ -21,6 +21,7 @@ motor intake = motor(PORT19, ratio6_1, false);
 motor kicker = motor(PORT8, ratio36_1, false);
 pneumatics wings = pneumatics(Brain.ThreeWirePort.A);
 pneumatics blocker = pneumatics(Brain.ThreeWirePort.B);
+inertial inert = inertial(PORT20);
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable
