@@ -3,7 +3,7 @@
 #include <cstring>
 #include <string.h>
 #include "vex.h"
-#include "functions.hpp"
+#include "pre-auton.hpp"
 #include "driver.hpp"
 #include "autons.hpp"
 
