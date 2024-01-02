@@ -11,9 +11,9 @@
 void describe(int number) {
   asian.Screen.setCursor(4, 1);
 
-  if (number == 1) {asian.Screen.print("OZ 100% 2 Triball");}
-  else if (number == 2) {asian.Screen.print("OZ 70% 3 Triball");}
-  else if (number == 3) {asian.Screen.print("DZ 100% 2 Triball (WIP)");}
+  if (number == 1) {asian.Screen.print("OZ 100% 3 Triball");}
+  else if (number == 2) {asian.Screen.print("OZ 70% 4 Triball");}
+  else if (number == 3) {asian.Screen.print("DZ 100% 3 Triball");}
   else if (number == 4) {asian.Screen.print("AWP");}
   else if (number == 5) {asian.Screen.print("Auton Skills");}
 }
