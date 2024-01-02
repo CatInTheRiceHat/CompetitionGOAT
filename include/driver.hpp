@@ -8,6 +8,7 @@
 // Driver Phase Code
 // ........................................................................
 
+bool CatapultDown = false;
 bool IntakeTog = false;
 bool OutakeTog = false;
 bool WingsTog = false;
@@ -78,6 +79,16 @@ void usercontrol(void) {
     //Catapult
     if (asian.ButtonL1.pressing()) {
       catapult.spin(reverse, 100, pct);
+      wait(100,msec);
+    }
+    else {
+      catapult.stop(hold);
+      wait(100,msec);
+    }
+
+    //Catapult Down
+    if (asian.ButtonR2.pressing()){
+      catapult.spinToPosition(340,deg,false);
       wait(100,msec);
     }
     else {
