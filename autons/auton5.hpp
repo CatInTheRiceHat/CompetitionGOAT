@@ -12,9 +12,9 @@ void auton5() {
   RobotDriveRev(1); //Drive till touching matchload bar
   wait(250,msec);
 
-  kicker.spin(reverse, 100, pct); //Matchloading
+  catapult.spin(reverse, 100, pct); //Matchloading
   wait(42,sec);
-  kicker.stop();
+  catapult.stop();
 
   RobotDriveFwd(1); //Drive fwd
   wait(250,msec);

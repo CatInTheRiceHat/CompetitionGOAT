@@ -13,7 +13,7 @@ extern motor bl;
 extern motor_group L;
 extern motor_group R;
 extern motor intake;
-extern motor kicker;
+extern motor catapult;
 extern pneumatics wings;
 extern pneumatics blocker;
 extern inertial inert;

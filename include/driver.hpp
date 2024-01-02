@@ -75,13 +75,13 @@ void usercontrol(void) {
     L.spin(fwd, arcadeleftPower, percent);
     R.spin(fwd, arcadeleftPower, percent);
 
-    //Kicker
+    //Catapult
     if (asian.ButtonL1.pressing()) {
-      kicker.spin(reverse, 100, pct);
+      catapult.spin(reverse, 100, pct);
       wait(100,msec);
     }
     else {
-      kicker.stop(hold);
+      catapult.stop(hold);
       wait(100,msec);
     }
 
