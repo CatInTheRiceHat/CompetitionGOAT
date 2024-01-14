@@ -54,13 +54,8 @@ void TemperatureCheck(){
 void usercontrol(void) {
 
   //Set all motors back to 100 pct.
-  fl.setVelocity(100,pct);
-  ml.setVelocity(100,pct);
-  bl.setVelocity(100,pct);
-
-  fr.setVelocity(100,pct);
-  mr.setVelocity(100,pct);
-  br.setVelocity(100,pct);
+  L.set_velocity(100,pct);
+  R.set_velocity(100,pct);
 
   asian.Screen.clearScreen();
 
