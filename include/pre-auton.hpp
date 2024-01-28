@@ -82,6 +82,8 @@ void Inertial(){
         wait(3,sec);
         asian.rumble(rumbleLong);
         wait(500,msec);
+        asian.Screen.clearScreen();
+        asian.Screen.setCursor(1, 1);
         asian.Screen.print("Done!");
         wait(500,msec);
         asian.Screen.clearScreen();
