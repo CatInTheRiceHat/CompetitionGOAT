@@ -1,6 +1,6 @@
 #include "vex.h"
 
-void auton1() {
+void auton1() { // I forgor
   AutonDriveSpeed(80);
   RobotDriveFwd(2500); //Drive to the middle of the double white line
   wait(250,msec);

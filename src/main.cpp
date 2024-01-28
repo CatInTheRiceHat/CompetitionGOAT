@@ -58,74 +58,73 @@ double derivative_orient = 0; //derivative is the difference between the current
 double error_orient = 0; //error is the difference between the target orientation and the current orientation
 double lastError_orient = 0; //lastError is the error from the last time the function was called
 
-//drivetrain pid with odometry
+// drivetrain pid with odometry
 void drivetrainPID(double targetDistance, double targetOrientation, double distanceSensorValue, double orientationSensorValue) {
-    //Calculate distance error
+    // Calculate distance error
     error = targetDistance - distanceSensorValue;
 
-    //Calculate orientation error
+    // Calculate orientation error
     error_orient = targetOrientation - orientationSensorValue;
 
-    //Calculate distance integral with windup prevention
+    // Calculate distance integral with windup prevention
     if (fabs(error) < integralLimit) {
         integral += error;
     } else {
         integral = 0;
     }
 
-    //Calculate orientation integral with windup prevention
+    // Calculate orientation integral with windup prevention
     if (fabs(error_orient) < integralLimit) {
         integral_orient += error_orient;
     } else {
         integral_orient = 0;
     }
 
-    //Calculate distance derivative
+    // Calculate distance derivative
     derivative = error - lastError; //change in distance
     lastError = error; //update previous value
 
-    //Calculate orientation derivative
-    derivative_orient = error_orient - lastError_orient; //change in orient
-    lastError_orient = error_orient; //update previous value
+    // Calculate orientation derivative
+    derivative_orient = error_orient - lastError_orient; // change in orient
+    lastError_orient = error_orient; // update previous value
 
-    //Calculate distance PID output
+    // Calculate distance PID output
     double output = kP * error + kI * integral + kD * derivative;
 
-    //Calculate orientation PID output
+    // Calculate orientation PID output
     double output_orient = kP_orient * error_orient + kI_orient * integral_orient + kD_orient * derivative_orient;
 
     // Control motors
-    double leftMotorSpeed = output + output_orient; //Calculate left speed
-    double rightMotorSpeed = output - output_orient; //Calculate right speed
+    double leftMotorSpeed = output + output_orient; // Calculate left speed
+    double rightMotorSpeed = output - output_orient; // Calculate right speed
 
     // Set motor speeds...
     L.spin(fwd, leftMotorSpeed, pct);
     R.spin(fwd, rightMotorSpeed, pct);
 }
 
-//pure pursuit with odometry
 void travel(double distance, double angle) {
-    //Get current distance sensor value
-    double currentDistance = (L.position(turns) + R.position(turns) / 2) * π * ws;
-    //Get current orientation sensor value
-    double currentOrientation = inert.yaw();
+    // Get current distance sensor value
+    double currentDistance = (fl.position(deg) + fr.position(deg) / 2);
+    // Get current orientation sensor value
+    double currentOrientation = inert.rotation(deg);
 
-    //Move forward
+    // Move forward
     while (fabs(distance - currentDistance) > 0.1) {
         drivetrainPID(distance, currentOrientation, currentDistance, currentOrientation);
-        currentDistance = (L.position(turns) + R.position(turns) / 2) * π * ws;
+        currentDistance = (fl.position(deg) + fr.position(deg) / 2);
     }
 
-    //Turn
+    // Turn
     while (fabs(angle - currentOrientation) > 0.1) {
         drivetrainPID(0, angle, currentDistance, currentOrientation);
-        currentOrientation = inert.yaw();
+        currentOrientation = inert.rotation(deg);
     }
 }
 
 void autonomous(void) {  
-  L.setPosition(0,turns);
-  R.setPosition(0,turns);
+  L.setPosition(0,deg);
+  R.setPosition(0,deg);
 
   travel(5,0);
   if (display == 1) {auton1();}
@@ -186,7 +185,7 @@ void TemperatureCheck(){
 
 void usercontrol(void) {
 
-  //Set all motors back to 100 pct.
+  // Set all motors back to 100 pct.
     fl.setVelocity(100, percent);
     ml.setVelocity(100, percent);
     bl.setVelocity(100, percent);
@@ -200,7 +199,7 @@ void usercontrol(void) {
 
   while (1) {
     
-    //Drivetrain
+    // Drivetrain
     double arcadeleftValue = asian.Axis3.position();
     double arcaderightValue = asian.Axis1.position();
 
@@ -215,7 +214,7 @@ void usercontrol(void) {
     mr.spin(fwd, arcaderightPower, percent);
     br.spin(fwd, arcaderightPower, percent);
 
-    //Catapult
+    // Catapult
     if (asian.ButtonL1.pressing()) {
       catapult.spin(reverse, 100, pct);
       wait(10, msec);
@@ -225,7 +224,7 @@ void usercontrol(void) {
       wait(10, msec);
     }
 
-    //Catapult Down
+    // Catapult Down
     if (asian.ButtonR2.pressing()){
       catapult.spinToPosition(340, deg);
       wait(10, msec);
@@ -235,7 +234,7 @@ void usercontrol(void) {
       wait(10, msec);
     }
 
-    //Intake
+    // Intake
     if (asian.ButtonR1.pressing()){
       if (!IntakeTog) {
         intake.spin(fwd, 80, pct);
