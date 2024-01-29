@@ -19,10 +19,6 @@ void pre_auton(void) {
   AutonSelector();
 }
 
-//PID
-double π = atan(1) * 4; //defining pi using the symbol because im cool
-double ws = 3.25; //wheel diameter in inches
-
 /*
 Set all gains to zero.
 
@@ -131,7 +127,7 @@ void autonomous(void) {
   if (display == 2) {auton2();}
   if (display == 3) {auton3();}
   if (display == 4) {auton4();}
-  if (display == 5) {auton5();}
+
   asian.Screen.setCursor(1, 1);
   asian.Screen.print("Done");
 }

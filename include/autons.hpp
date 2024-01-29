@@ -1,6 +1,6 @@
 #include "vex.h"
 
-void auton1() { // I forgor
+void auton1() { // Elims OZ 30P
   AutonDriveSpeed(80);
   RobotDriveFwd(2500); //Drive to the middle of the double white line
   wait(250,msec);
@@ -35,7 +35,36 @@ void auton1() { // I forgor
   RobotDriveRev(700); //Prepare for driver control
 }
 
-void auton2() {
+void auton2() { // Elims DZ 13P
+  AutonDriveSpeed(80);
+  RobotDriveFwd(1); //Drive behind the double white line
+  wait(250,msec);
+  RobotLeftTurn(1); //Turn 90 deg counterclockwise
+  wait(250,msec);
+  AutonDriveSpeed(100);
+  intake.spin(reverse, 100, pct); //Score and push
+  RobotDriveFwd(1);
+  wait(100,msec);
+  RobotDriveRev(1); //Drive back to any reasonable point
+  intake.stop();
+  AutonDriveSpeed(80);
+  RobotRightTurn(1); //Turn 135 deg clockwise
+  wait(250,msec);
+  intake.spin(fwd, 100, pct); //Intake triball and DON'T CROSS THE DOUBLE WHITE LINE
+  RobotDriveFwd(1);
+  wait(250,msec);
+  RobotDriveRev(1); //Go back same distance, stay on double line
+  wait(250,msec);
+  RobotLeftTurn(1); //Turn 135 deg counterclockwise
+  wait(250,msec);
+  AutonDriveSpeed(100);
+  intake.spin(reverse, 100, pct); //Score triball
+  RobotDriveFwd(1);
+  wait(100,msec);
+  RobotDriveRev(1); //Drive back and prepare for driver practice
+}
+
+void auton3() { //Quals DZ AWP 1WP
   AutonDriveSpeed(50);
   RobotDriveFwd(2500); //Drive to the middle of the double white line
   wait(250,msec);
@@ -94,7 +123,7 @@ void auton2() {
   RobotDriveRev(500);
 }
 
-void auton3() {
+void auton4() { // Auton Skills 190+
   AutonDriveSpeed(80);
   RobotDriveFwd(1); //Drive behind the double white line
   wait(250,msec);
@@ -121,84 +150,4 @@ void auton3() {
   RobotDriveFwd(1);
   wait(100,msec);
   RobotDriveRev(1); //Drive back and prepare for driver practice
-}
-
-void auton4() { //Works 70% of the time
-  AutonDriveSpeed(50);
-  RobotDriveFwd(1200); //Drive behind the double white line
-  wait(250,msec);
-  AutonDriveSpeed(80);
-  RobotRightTurn(250); //Turn to be perpendicular to the side of the goal
-  wait(250,msec);
-  AutonDriveSpeed(35);
-  intake.spin(fwd, 100, pct); //Score and push
-  wait(300,msec);
-  RobotDriveFwd(800);
-  wait(100,msec);
-  intake.stop();
-  AutonDriveSpeed(25);
-  RobotDriveRev(970); //Drive back to center of goal tile
-  wait(300,msec);
-  RobotLeftTurn(180); //Turn 90 deg counterclockwise
-  wait(250,msec);
-  wings.set(1);
-  wait(250,msec);
-  AutonDriveSpeed(100);
-  RobotDriveRev(920); //drive back to pull the triball out of the matchload zone
-  wait(250,msec);
-  RobotLeftTurn(190); //turn and try to pull the triball out of the matchload zone again just in case
-  wait(250,msec);
-  RobotDriveRev(300);
-  wait(500,msec);
-  RobotDriveFwd(500); //minor adjustments so we can back up properly to the elevation bar
-  wait(100,msec);
-  wings.set(0);
-  RobotLeftTurn(170); //Touch the elevation bar
-  wait(500,msec);
-  RobotDriveRev(3200);
-}
-
-void auton5() {
-  AutonDriveSpeed(80);
-  RobotDriveFwd(1); //Drive fwd
-  wait(250,msec);
-  RobotLeftTurn(1); //Rotate 45 deg counterclockwise
-  wait(250,msec);
-  RobotDriveRev(1); //Drive till touching matchload bar
-  wait(250,msec);
-  catapult.spin(reverse, 100, pct); //Matchloading
-  wait(42,sec);
-  catapult.stop();
-  RobotDriveFwd(1); //Drive fwd
-  wait(250,msec);
-  RobotLeftTurn(1); //Rotate 45 deg counterclockwise
-  wait(250,msec);
-  AutonDriveSpeed(100);
-  wings.set(1); //Pushing
-  RobotDriveFwd(1); 
-  wait(250,msec);
-  RobotDriveRev(1); //Drive back
-  wait(250,msec); 
-  RobotRightTurn(1); //Rotate 90 deg clockwise
-  wait(250,msec);
-  RobotDriveFwd(1); //Drive fwd
-  wait(250,msec);
-  RobotLeftTurn(1); //Rotate 90 deg counterclockwise
-  wait(250,msec);
-  wings.set(1); //Pushing
-  RobotDriveFwd(1); 
-  wait(250,msec);
-  RobotDriveRev(1); //Drive back
-  wait(250,msec); 
-  RobotRightTurn(1); //Rotate 90 deg clockwise
-  wait(250,msec);
-  RobotDriveFwd(1); //Drive fwd
-  wait(250,msec);
-  RobotLeftTurn(1); //Rotate 90 deg counterclockwise
-  wait(250,msec);
-  wings.set(1); //Pushing
-  RobotDriveFwd(1); 
-  wait(250,msec);
-  RobotDriveRev(1); //Drive back
-  wait(250,msec); 
 }
