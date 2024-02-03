@@ -122,7 +122,7 @@ void autonomous(void) {
   L.setPosition(0,deg);
   R.setPosition(0,deg);
 
-  travel(5,0);
+  travel(100,0);
   if (display == 1) {auton1();}
   if (display == 2) {auton2();}
   if (display == 3) {auton3();}
