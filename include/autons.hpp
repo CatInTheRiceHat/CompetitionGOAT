@@ -1,6 +1,6 @@
 #include "vex.h"
 
-void auton1() { // Elims OZ 30P
+void auton1() { // Elims OZ 6 Tri
   AutonDriveSpeed(80);
   RobotDriveFwd(2500); //Drive to the middle of the double white line
   wait(250,msec);
@@ -35,7 +35,7 @@ void auton1() { // Elims OZ 30P
   RobotDriveRev(700); //Prepare for driver control
 }
 
-void auton2() { // Elims DZ 13P
+void auton2() { // Elims DZ 6 Tri
   AutonDriveSpeed(80);
   RobotDriveFwd(1); //Drive behind the double white line
   wait(250,msec);
@@ -64,7 +64,7 @@ void auton2() { // Elims DZ 13P
   RobotDriveRev(1); //Drive back and prepare for driver practice
 }
 
-void auton3() { //Quals DZ AWP 1WP
+void auton3() { //Quals DZ AWP
   AutonDriveSpeed(50);
   RobotDriveFwd(2500); //Drive to the middle of the double white line
   wait(250,msec);
