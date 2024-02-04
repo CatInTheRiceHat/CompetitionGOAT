@@ -19,7 +19,6 @@ void pre_auton(void) {
   AutonSelector();
 }
 
-
 void autonomous(void) {  
   L.setPosition(0,deg);
   R.setPosition(0,deg);
