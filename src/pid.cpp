@@ -16,9 +16,9 @@ Increase kI until the robot reaches the target distance in a reasonable time dur
 */
 
 //PID constants
-double kP = 10; //kP is the constant for proportional control
+double kP = 0.04; //kP is the constant for proportional control
 double kI = 0; //kI is the constant for integral control
-double kD = 0; //kD is the constant for derivative control
+double kD = 1; //kD is the constant for derivative control
 
 //PID variables
 double integral = 0; //integral is the sum of all errors 
