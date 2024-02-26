@@ -25,6 +25,7 @@ void autonomous(void) {
   L.setPosition(0,deg);
   R.setPosition(0,deg);
 
+  travel(100,0);
   if (display == 1) {auton1();}
   if (display == 2) {auton2();}
   if (display == 3) {auton3();}
@@ -81,10 +82,6 @@ void TemperatureCheck(){
 
 void usercontrol(void) {
 
-  if (asian.ButtonY.pressing()){ //manual auton skills tester 
-    travel(100,0);
-  }
-
   // Set all motors back to 100 pct.
     fl.setVelocity(100, percent);
     ml.setVelocity(100, percent);
@@ -134,27 +131,17 @@ void usercontrol(void) {
     }
 
     // Intake
-    if (asian.ButtonR1.pressing()){
+    if (asian.ButtonR1.pressing()==true){
       intake.spin(fwd, 100, pct);
-      wait(10, msec);
     }
-    else {
-      intake.stop(coast);
-      wait(10, msec);
-    }
-
-
-    //Outake
-    if (asian.ButtonR2.pressing()){
+    else if (asian.ButtonR2.pressing()==true){
       intake.spin(reverse, 100, pct);
-      wait(10, msec);
     }
     else {
-      intake.stop(coast);
-      wait(10, msec);
+    intake.stop(coast);
     }
 
-    //Wings
+    // Wings
     if (asian.ButtonB.pressing()){
       if (!WingsTog) {
         wings.set(1);
@@ -168,7 +155,7 @@ void usercontrol(void) {
       }
     }
 
-    //Blocker
+    // Blocker
     if (asian.ButtonX.pressing()) {
       blocker.set(1);
       wait(10, msec);
@@ -178,7 +165,7 @@ void usercontrol(void) {
       wait(10, msec);
     }
 
-    //TemperatureCheck
+    // TemperatureCheck
     TemperatureCheck();
     wait(20, msec);      
   } 
