@@ -17,13 +17,14 @@ void pre_auton(void) {
   vexcodeInit();
   Inertial();
   AutonSelector();
+  L.setStopping(coast);
+  R.setStopping(coast);
 }
 
 void autonomous(void) {  
   L.setPosition(0,deg);
   R.setPosition(0,deg);
 
-  travel(100,0);
   if (display == 1) {auton1();}
   if (display == 2) {auton2();}
   if (display == 3) {auton3();}
@@ -38,8 +39,6 @@ void autonomous(void) {
 // ........................................................................
 
 bool CatapultDown = false;
-bool IntakeTog = false;
-bool OutakeTog = false;
 bool WingsTog = false;
 
 // ........................................................................
@@ -82,6 +81,10 @@ void TemperatureCheck(){
 
 void usercontrol(void) {
 
+  if (asian.ButtonY.pressing()){ //manual auton skills tester 
+    travel(100,0);
+  }
+
   // Set all motors back to 100 pct.
     fl.setVelocity(100, percent);
     ml.setVelocity(100, percent);
@@ -91,7 +94,6 @@ void usercontrol(void) {
     mr.setVelocity(100, percent);
     br.setVelocity(100, percent);
 
-
   asian.Screen.clearScreen();
 
   while (1) {
@@ -100,8 +102,8 @@ void usercontrol(void) {
     double arcadeleftValue = asian.Axis3.position();
     double arcaderightValue = asian.Axis1.position();
 
-    double arcadeleftPower = (0.7*(arcadeleftValue + arcaderightValue));
-    double arcaderightPower = (0.7*(arcadeleftValue - arcaderightValue));
+    double arcadeleftPower = (0.6*(arcadeleftValue + arcaderightValue));
+    double arcaderightPower = (0.6*(arcadeleftValue - arcaderightValue));
 
     fl.spin(fwd, arcadeleftPower, percent);
     ml.spin(fwd, arcadeleftPower, percent);
@@ -133,30 +135,23 @@ void usercontrol(void) {
 
     // Intake
     if (asian.ButtonR1.pressing()){
-      if (!IntakeTog) {
-        intake.spin(fwd, 80, pct);
-        wait(10, msec);
-        IntakeTog = true;
-      }
-      else if (IntakeTog) {
-        intake.stop(coast);
-        wait(10, msec);
-        IntakeTog = false;
-      }
+      intake.spin(fwd, 100, pct);
+      wait(10, msec);
     }
+    else {
+      intake.stop(coast);
+      wait(10, msec);
+    }
+
 
     //Outake
     if (asian.ButtonR2.pressing()){
-      if (!OutakeTog) {
-        intake.spin(reverse, 80, pct);
-        wait(10, msec);
-        OutakeTog = true;
-      }
-      else if (OutakeTog) {
-        intake.stop(coast);
-        wait(10, msec);
-        OutakeTog = false;
-      }
+      intake.spin(reverse, 100, pct);
+      wait(10, msec);
+    }
+    else {
+      intake.stop(coast);
+      wait(10, msec);
     }
 
     //Wings

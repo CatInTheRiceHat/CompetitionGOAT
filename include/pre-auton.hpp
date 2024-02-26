@@ -114,23 +114,31 @@ void RobotDriveRev(double Drive) {
 }
 
 void RobotLeftTurn(double Turn) {
-  fl.spinFor(reverse, Turn, deg, false);
-  ml.spinFor(reverse, Turn, deg, false);
-  bl.spinFor(reverse, Turn, deg, false);
-  
-  fr.spinFor(fwd, Turn, deg, false);
-  mr.spinFor(fwd, Turn, deg, false);
-  br.spinFor(fwd, Turn, deg, true);
+  inert.setRotation(0,deg);
+
+  while (fabs(inert.rotation(degrees)) < Turn) {
+    double error = Turn - fabs(inert.rotation(degrees));
+    L.spin(reverse, 5 + 0.4 * error, pct);
+    R.spin(fwd, 5 + 0.4 * error, pct);
+    wait(20, msec);
+  }
+
+  L.stop(brake);
+  R.stop(brake);
 }
 
 void RobotRightTurn(double Turn) {
-  fl.spinFor(fwd, Turn, deg, false);
-  ml.spinFor(fwd, Turn, deg, false);
-  bl.spinFor(fwd, Turn, deg, false);
-  
-  fr.spinFor(reverse, Turn, deg, false);
-  mr.spinFor(reverse, Turn, deg, false);
-  br.spinFor(reverse, Turn, deg, true);
+  inert.setRotation(0,deg);
+
+  while (fabs(inert.rotation(degrees)) < Turn) {
+    double error = Turn - fabs(inert.rotation(degrees));
+    L.spin(fwd, 5 + (0.4 * error),pct);
+    R.spin(reverse, 5 + (0.4 * error),pct);
+    wait(20, msec);
+  }
+
+  L.stop(brake);
+  R.stop(brake);
 }
 
 void AutonDriveSpeed(double Speed){
