@@ -24,7 +24,7 @@ void autonomous(void) {
   L.setPosition(0,deg);
   R.setPosition(0,deg);
 
-  pid(1000);
+  pid(1333);
 
   if (display == 1) {auton1();}
   if (display == 2) {auton2();}
