@@ -154,9 +154,9 @@ void AutonDriveSpeed(double Speed){
 // ........................................................................
 
 int pid(double target) {
-  double kP = 0.0025;
-  double kI = 0;
-  double kD = 0;
+  double kP = 0.0015;
+  double kI = 0.005;
+  double kD = 0.01;
   double error = 0;
   double integral = 0;
   double derivative = 0;
