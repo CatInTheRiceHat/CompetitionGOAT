@@ -3,8 +3,7 @@
 #include <cstring>
 #include <string.h>
 #include "vex.h"
-#include "pre-auton.hpp"
-#include "pid.hpp"
+#include "functions.hpp"
 #include "autons.hpp"
 
 using namespace vex;
@@ -25,7 +24,8 @@ void autonomous(void) {
   L.setPosition(0,deg);
   R.setPosition(0,deg);
 
-  travel(3200,0);
+  pid(350);
+
   if (display == 1) {auton1();}
   if (display == 2) {auton2();}
   if (display == 3) {auton3();}

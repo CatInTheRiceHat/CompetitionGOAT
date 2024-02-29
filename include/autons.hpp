@@ -1,8 +1,6 @@
 #include "vex.h"
 
 void auton1() { // Elims OZ 6 Tri
-  travel(2662,0); //Drive to the middle of the double white line
-  wait(100,msec);
 
   RobotRightTurn(90); //Turn 90 deg clockwis
   wait(100,msec);
@@ -10,14 +8,12 @@ void auton1() { // Elims OZ 6 Tri
   intake.spin(reverse, 100, pct); //Outake
   wait(100,msec);
 
-  travel(-1000,0); //Drive back to middle of the two tiles, ok to knock off the other triball
+  //Drive back to middle of the two tiles, ok to knock off the other triball
   intake.stop();
 
   RobotDriveFwd(500);
   wait(100,msec);
 
-  travel(-1000,0);
-  wait(100,msec);
 }
 
 void auton2() { // Elims DZ 6 Tri

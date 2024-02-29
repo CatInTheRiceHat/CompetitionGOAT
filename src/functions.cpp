@@ -1,8 +1,6 @@
-#include <iostream>
-#include "stdarg.h"
-#include <cstring>
-#include <string.h>
 #include "vex.h"
+
+using namespace vex;
 
 // ........................................................................
 // Auton Selector
@@ -149,4 +147,70 @@ void AutonDriveSpeed(double Speed){
   fr.setVelocity(Speed, pct);
   mr.setVelocity(Speed, pct);
   br.setVelocity(Speed, pct);
+}
+
+// ........................................................................
+// PID
+// ........................................................................
+
+int pid(double target) {
+  double kP = 1;
+  double kI = 0;
+  double kD = 0;
+  double error = 0;
+  double integral = 0;
+  double derivative = 0;
+  double prevError = 0;
+
+  double power = 0;
+  double prevPower = 0;
+
+  fl.setPosition(0,deg);
+  fr.setPosition(0,deg);
+  ml.setPosition(0,deg);
+  mr.setPosition(0,deg);
+  bl.setPosition(0,deg);
+  br.setPosition(0,deg);
+
+  while (1) {
+    double currentDist = (L.position(deg) + R.position(deg))/2;
+
+    error = target - currentDist;
+    if(fabs(integral) > 200) {
+      integral += error;
+    }
+
+    derivative = error - prevError;
+
+    power = (kP*error) + (kI*integral) + (kD*derivative);
+
+    if (power > 1) power = 1;
+    if (power < -1) power = -1;
+
+    double slew = 0.1;
+
+    if (power > prevPower + slew) power = prevPower + slew;
+    if (power < prevPower - slew) power = prevPower - slew;
+
+    fl.spin(fwd,11*power,volt);
+    fr.spin(fwd,11*power,volt);
+    ml.spin(fwd,11*power,volt);
+    mr.spin(fwd,11*power,volt);
+    bl.spin(fwd,11*power,volt);
+    br.spin(fwd,11*power,volt);
+
+    if (error > -5 && error < 5 && error - prevError > -3 && error - prevError < 3) break;
+
+    prevPower = power;
+    prevError = error;
+
+    wait(20,msec);
+  }
+  fl.stop();
+  fr.stop();
+  ml.stop();
+  mr.stop();
+  bl.stop();
+  br.stop();
+  return 0;
 }
