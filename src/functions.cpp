@@ -165,12 +165,8 @@ int pid(double target) {
   double power = 0;
   double prevPower = 0;
 
-  fl.setPosition(0,deg);
-  fr.setPosition(0,deg);
-  ml.setPosition(0,deg);
-  mr.setPosition(0,deg);
-  bl.setPosition(0,deg);
-  br.setPosition(0,deg);
+  L.setPosition(0,deg);
+  R.setPosition(0,deg);
 
   while (1) {
     double currentDist = (L.position(deg) + R.position(deg))/2;
@@ -192,12 +188,8 @@ int pid(double target) {
     if (power > prevPower + slew) power = prevPower + slew;
     if (power < prevPower - slew) power = prevPower - slew;
 
-    fl.spin(fwd,11*power,volt);
-    fr.spin(fwd,11*power,volt);
-    ml.spin(fwd,11*power,volt);
-    mr.spin(fwd,11*power,volt);
-    bl.spin(fwd,11*power,volt);
-    br.spin(fwd,11*power,volt);
+    L.spin(fwd,11*power,volt);
+    R.spin(fwd,11*power,volt);
 
     if (error > -5 && error < 5 && error - prevError > -3 && error - prevError < 3) break;
 
