@@ -41,6 +41,7 @@ void autonomous(void) {
 
 bool CatapultDown = false;
 bool WingsTog = false;
+bool Hang = false;
 
 // ........................................................................
 // Temperature Check
@@ -81,16 +82,6 @@ void TemperatureCheck(){
 }
 
 void usercontrol(void) {
-
-  // Set all motors back to 100 pct.
-    fl.setVelocity(100, percent);
-    ml.setVelocity(100, percent);
-    bl.setVelocity(100, percent);
-
-    fr.setVelocity(100, percent);
-    mr.setVelocity(100, percent);
-    br.setVelocity(100, percent);
-
   asian.Screen.clearScreen();
 
   while (1) {
@@ -126,7 +117,7 @@ void usercontrol(void) {
     }
 
     // Catapult Down
-    if (asian.ButtonR2.pressing()){
+    if (asian.ButtonL2.pressing()){
       catapult.spinToPosition(340, deg);
       wait(10, msec);
     }
@@ -161,13 +152,20 @@ void usercontrol(void) {
     }
 
     // Blocker
-    if (asian.ButtonX.pressing()) {
-      blocker.set(1);
-      wait(10, msec);
+    if (asian.ButtonUp.pressing()){
+      if (!Hang) {
+        hang.set(1);
+        wait(10, msec);
+        Hang = true;
+      }
     }
-    else {
-      blocker.set(0);
-      wait(10, msec);
+
+    if (asian.ButtonDown.pressing()){
+      if (Hang) {
+        hang.set(0);
+        wait(10, msec);
+        Hang = false;
+      }
     }
 
     // TemperatureCheck

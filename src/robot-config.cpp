@@ -20,7 +20,7 @@ motor_group R = motor_group(mr, br, fr);
 motor intake = motor(PORT17, ratio6_1, false);
 motor catapult = motor(PORT4, ratio36_1, false);
 pneumatics wings = pneumatics(Brain.ThreeWirePort.A);
-pneumatics blocker = pneumatics(Brain.ThreeWirePort.B);
+pneumatics hang = pneumatics(Brain.ThreeWirePort.B);
 inertial inert = inertial(PORT15);
 
 // VEXcode generated functions

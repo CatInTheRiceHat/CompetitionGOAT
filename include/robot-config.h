@@ -15,7 +15,7 @@ extern motor_group R;
 extern motor intake;
 extern motor catapult;
 extern pneumatics wings;
-extern pneumatics blocker;
+extern pneumatics hang;
 extern inertial inert;
 
 /**
