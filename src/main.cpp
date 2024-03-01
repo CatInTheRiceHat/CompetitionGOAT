@@ -25,7 +25,7 @@ void autonomous(void) {
   R.setPosition(0,deg);
 
   pid(2350);
-  RobotLeftTurn(90); //Turn 90 deg clockwis
+  RobotLeftTurn(90);
   if (display == 1) {auton1();}
   if (display == 2) {auton2();}
   if (display == 3) {auton3();}
@@ -94,13 +94,8 @@ void usercontrol(void) {
     double arcadeleftPower = ((arcadeleftValue + arcaderightValue));
     double arcaderightPower = ((arcadeleftValue - arcaderightValue));
 
-    fl.spin(fwd, arcadeleftPower, percent);
-    ml.spin(fwd, arcadeleftPower, percent);
-    bl.spin(fwd, arcadeleftPower, percent);
-
-    fr.spin(fwd, arcaderightPower, percent);
-    mr.spin(fwd, arcaderightPower, percent);
-    br.spin(fwd, arcaderightPower, percent);
+    L.spin(fwd, (0.8*arcadeleftPower), percent);
+    R.spin(fwd, (0.8*arcaderightPower), percent);
 
     if (arcadeleftPower > arcaderightPower || arcadeleftPower < arcaderightPower) {
       arcadeleftPower = 0.6*arcadeleftPower;
