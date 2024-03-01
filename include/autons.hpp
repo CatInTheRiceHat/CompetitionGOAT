@@ -1,19 +1,10 @@
 #include "vex.h"
 
 void auton1() { // Elims OZ 6 Tri
-
-  RobotRightTurn(90); //Turn 90 deg clockwis
+  pid(2350);
   wait(100,msec);
-
-  intake.spin(reverse, 100, pct); //Outake
+  RobotLeftTurn(90); //Turn 90 deg clockwis
   wait(100,msec);
-
-  //Drive back to middle of the two tiles, ok to knock off the other triball
-  intake.stop();
-
-  RobotDriveFwd(500);
-  wait(100,msec);
-
 }
 
 void auton2() { // Elims DZ 6 Tri

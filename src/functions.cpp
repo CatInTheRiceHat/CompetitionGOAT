@@ -116,8 +116,8 @@ void RobotLeftTurn(double Turn) {
 
   while (fabs(inert.rotation(degrees)) < Turn) {
     double error = Turn - fabs(inert.rotation(degrees));
-    L.spin(reverse, 5 + 0.4 * error, pct);
-    R.spin(fwd, 5 + 0.4 * error, pct);
+    L.spin(reverse, 5 + error, pct);
+    R.spin(fwd, 5 + error, pct);
     wait(20, msec);
   }
 
@@ -130,8 +130,8 @@ void RobotRightTurn(double Turn) {
 
   while (fabs(inert.rotation(degrees)) < Turn) {
     double error = Turn - fabs(inert.rotation(degrees));
-    L.spin(fwd, 5 + (0.4 * error),pct);
-    R.spin(reverse, 5 + (0.4 * error),pct);
+    L.spin(fwd, 5 + error,pct);
+    R.spin(reverse, 5 + error,pct);
     wait(20, msec);
   }
 

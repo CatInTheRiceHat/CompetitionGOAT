@@ -24,7 +24,8 @@ void autonomous(void) {
   L.setPosition(0,deg);
   R.setPosition(0,deg);
 
-  pid(1250);
+  pid(2350);
+  RobotLeftTurn(83.5); //Turn 90 deg clockwis
   if (display == 1) {auton1();}
   if (display == 2) {auton2();}
   if (display == 3) {auton3();}
