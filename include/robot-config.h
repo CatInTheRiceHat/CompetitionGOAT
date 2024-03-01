@@ -14,7 +14,8 @@ extern motor_group L;
 extern motor_group R;
 extern motor intake;
 extern motor catapult;
-extern pneumatics wings;
+extern pneumatics wedgewings;
+extern pneumatics vertwings;
 extern pneumatics hang;
 extern inertial inert;
 

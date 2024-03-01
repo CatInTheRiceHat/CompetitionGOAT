@@ -40,7 +40,8 @@ void autonomous(void) {
 // ........................................................................
 
 bool CatapultDown = false;
-bool WingsTog = false;
+bool WedgeWingsTog = false;
+bool VertWingsTog = false;
 bool Hang = false;
 
 // ........................................................................
@@ -138,16 +139,29 @@ void usercontrol(void) {
     }
 
     // Wings
-    if (asian.ButtonB.pressing()){
-      if (!WingsTog) {
-        wings.set(1);
+    if (asian.ButtonX.pressing()){
+      if (!WedgeWingsTog) {
+        wedgewings.set(1);
         wait(10, msec);
-        WingsTog = true;
+        WedgeWingsTog = true;
       }
-      else if (WingsTog) {
-        wings.set(0);
+      else if (WedgeWingsTog) {
+        wedgewings.set(0);
         wait(10, msec);
-        WingsTog = false;
+        WedgeWingsTog = false;
+      }
+    }
+
+    if (asian.ButtonB.pressing()){
+      if (!VertWingsTog) {
+        vertwings.set(1);
+        wait(10, msec);
+        VertWingsTog = true;
+      }
+      else if (VertWingsTog) {
+        vertwings.set(0);
+        wait(10, msec);
+        VertWingsTog = false;
       }
     }
 
