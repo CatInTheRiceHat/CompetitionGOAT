@@ -9,9 +9,9 @@ using namespace vex;
 void describe(int number) {
   asian.Screen.setCursor(4, 1);
 
-  if (number == 1) {asian.Screen.print("Elims OZ 6 Tri");}
-  else if (number == 2) {asian.Screen.print("Elims DZ 6 Tri");}
-  else if (number == 3) {asian.Screen.print("Quals DZ AWP");}
+  if (number == 1) {asian.Screen.print("Elims OZ 6 Tri Goal Rush");}
+  else if (number == 2) {asian.Screen.print("Elims DZ 4 Tri");}
+  else if (number == 3) {asian.Screen.print("Quals DZ AWP + 3 Tri");}
   else if (number == 4) {asian.Screen.print("Auton Skills 190+");}
 }
 
