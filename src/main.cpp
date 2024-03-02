@@ -24,8 +24,6 @@ void autonomous(void) {
   L.setPosition(0,deg);
   R.setPosition(0,deg);
 
-  pid(2350);
-  RobotLeftTurn(90);
   if (display == 1) {auton1();}
   if (display == 2) {auton2();}
   if (display == 3) {auton3();}
@@ -98,8 +96,8 @@ void usercontrol(void) {
     R.spin(fwd, (0.8*arcaderightPower), percent);
 
     if (arcadeleftPower > arcaderightPower || arcadeleftPower < arcaderightPower) {
-      arcadeleftPower = 0.6*arcadeleftPower;
-      arcaderightPower = 0.6*arcaderightPower;
+      arcadeleftPower = 0.75*arcadeleftPower;
+      arcaderightPower = 0.75*arcaderightPower;
     }
 
     // Catapult

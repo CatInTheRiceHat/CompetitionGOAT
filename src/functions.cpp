@@ -157,7 +157,7 @@ int pid(double target) {
   double kP = 0.0015;
   double kI = 0.005;
   double kD = 0.01;
-  double error = 0;
+  double error = target;
   double integral = 0;
   double derivative = 0;
   double prevError = 0;
@@ -172,7 +172,7 @@ int pid(double target) {
     double currentDist = (L.position(deg) + R.position(deg))/2;
 
     error = target - currentDist;
-    if(fabs(integral) > 200) {
+    if(fabs(integral) < 200) {
       integral += error;
     }
 
