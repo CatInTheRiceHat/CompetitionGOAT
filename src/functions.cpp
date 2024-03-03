@@ -96,13 +96,13 @@ void Inertial() {
 // ........................................................................
 
 void RobotDriveFwd(double Drive) {
-  L.spinFor(fwd, 1.25*Drive, deg, false);
-  R.spinFor(fwd, 1.25*Drive, deg, false);
+  L.spinFor(fwd, Drive, deg, false);
+  R.spinFor(fwd, Drive, deg, false);
 }
 
 void RobotDriveRev(double Drive) {
-  L.spinFor(reverse, 1.25*Drive, deg, false);
-  R.spinFor(reverse, 1.25*Drive, deg, false);
+  L.spinFor(reverse, Drive, deg, false);
+  R.spinFor(reverse, Drive, deg, false);
 }
 
 void RobotLeftTurn(double Turn) {

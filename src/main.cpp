@@ -24,7 +24,7 @@ void autonomous(void) {
   L.setStopping(brake);
   R.setStopping(brake);
   PidOn = true;
-  pid(2000);
+  pid(2050);
   wait(100,msec);
   RobotRightTurn(90);
   wait(50,msec);
