@@ -9,6 +9,7 @@
 
 extern int autons;
 extern int display;
+extern bool PidOn;
 
 void describe(int number);
 void AutonSelector();

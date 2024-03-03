@@ -130,6 +130,7 @@ void RobotLeftTurn(double Turn) {
 }
 
 void RobotRightTurn(double Turn) {
+  asian.Screen.print("Right turn is doing stuff");
   inert.setRotation(0,deg);
 
   while (fabs(inert.rotation(degrees)) < Turn) {
@@ -157,11 +158,13 @@ void AutonDriveSpeed(double Speed){
 // PID
 // ........................................................................
 
+bool PidOn = false;
+
 int pid(double target) {
-  double kP = 0.0015;
-  double kI = 0.005;
-  double kD = 0.01;
-  double error = target;
+  double kP = 0.00401;
+  double kI = 0.006;
+  double kD = 0.015;
+  double error = 0;
   double integral = 0;
   double derivative = 0;
   double prevError = 0;
@@ -172,11 +175,11 @@ int pid(double target) {
   L.setPosition(0,deg);
   R.setPosition(0,deg);
 
-  while (1) {
+  while (PidOn) {
     double currentDist = (L.position(deg) + R.position(deg))/2;
 
     error = target - currentDist;
-    if(fabs(integral) < 200) {
+    if(fabs(integral) > 200) {
       integral += error;
     }
 
@@ -195,18 +198,21 @@ int pid(double target) {
     L.spin(fwd,11*power,volt);
     R.spin(fwd,11*power,volt);
 
-    if (error > -5 && error < 5 && error - prevError > -3 && error - prevError < 3) break;
+    asian.Screen.clearScreen();
+    asian.Screen.setCursor(1, 1);
+    asian.Screen.print(error);
+    wait(20,msec);
+
+    if (error > -5 && error < 5) {
+      return 0;
+    }
 
     prevPower = power;
     prevError = error;
 
     wait(20,msec);
   }
-  fl.stop();
-  fr.stop();
-  ml.stop();
-  mr.stop();
-  bl.stop();
-  br.stop();
+  L.stop();
+  R.stop();
   return 0;
 }

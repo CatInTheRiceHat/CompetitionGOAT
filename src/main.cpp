@@ -15,17 +15,18 @@ void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
   Inertial();
-  AutonSelector();
+  //AutonSelector();
   L.setStopping(coast);
   R.setStopping(coast);
 }
 
 void autonomous(void) {  
-  L.setPosition(0,deg);
-  R.setPosition(0,deg);
- 
-  pid(2350);
-  RobotLeftTurn(90);
+  L.setStopping(brake);
+  R.setStopping(brake);
+  PidOn = true;
+  pid(2300);
+  wait(100,msec);
+  RobotRightTurn(90);
   if (display == 1) {auton1();}
   if (display == 2) {auton2();}
   if (display == 3) {auton3();}
@@ -84,6 +85,8 @@ void TemperatureCheck() {
 
 void usercontrol(void) {
   asian.Screen.clearScreen();
+  L.setStopping(coast);
+  R.setStopping(coast);
 
   while (1) {
     
