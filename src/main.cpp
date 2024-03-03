@@ -98,8 +98,8 @@ void usercontrol(void) {
     R.spin(fwd, (0.8*arcaderightPower), percent);
 
     if (arcadeleftPower > arcaderightPower || arcadeleftPower < arcaderightPower) {
-      arcadeleftPower = 0.75*arcadeleftPower;
-      arcaderightPower = 0.75*arcaderightPower;
+      arcadeleftPower = 1.25*arcadeleftPower;
+      arcaderightPower = 1.25*arcaderightPower;
     }
 
     // Catapult
@@ -123,10 +123,10 @@ void usercontrol(void) {
     }
 
     // Intake
-    if (asian.ButtonR1.pressing()==true) {
+    if (asian.ButtonR1.pressing()) {
       intake.spin(fwd, 100, pct);
     }
-    else if (asian.ButtonR2.pressing()==true) {
+    else if (asian.ButtonR2.pressing()) {
       intake.spin(reverse, 100, pct);
     }
     else {
