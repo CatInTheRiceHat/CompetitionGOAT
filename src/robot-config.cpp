@@ -21,7 +21,7 @@ motor intake = motor(PORT7, ratio6_1, false);
 motor catapult = motor(PORT4, ratio36_1, false);
 pneumatics wedgewings = pneumatics(Brain.ThreeWirePort.A);
 pneumatics vertwings = pneumatics(Brain.ThreeWirePort.C);
-pneumatics hang = pneumatics(Brain.ThreeWirePort.C);
+pneumatics hang = pneumatics(Brain.ThreeWirePort.D);
 inertial inert = inertial(PORT15);
 
 // VEXcode generated functions
