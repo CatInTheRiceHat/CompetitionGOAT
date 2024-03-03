@@ -20,7 +20,7 @@ motor_group R = motor_group(mr, br, fr);
 motor intake = motor(PORT7, ratio6_1, false);
 motor catapult = motor(PORT4, ratio36_1, false);
 pneumatics wedgewings = pneumatics(Brain.ThreeWirePort.A);
-pneumatics vertwings = pneumatics(Brain.ThreeWirePort.A);
+pneumatics vertwings = pneumatics(Brain.ThreeWirePort.C);
 pneumatics hang = pneumatics(Brain.ThreeWirePort.C);
 inertial inert = inertial(PORT15);
 

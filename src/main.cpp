@@ -23,7 +23,9 @@ void pre_auton(void) {
 void autonomous(void) {  
   L.setPosition(0,deg);
   R.setPosition(0,deg);
-
+ 
+  pid(2350);
+  RobotLeftTurn(90);
   if (display == 1) {auton1();}
   if (display == 2) {auton2();}
   if (display == 3) {auton3();}
