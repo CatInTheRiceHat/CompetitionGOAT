@@ -96,23 +96,13 @@ void Inertial() {
 // ........................................................................
 
 void RobotDriveFwd(double Drive) {
-  fl.spinFor(fwd, Drive, deg, false);
-  ml.spinFor(fwd, Drive, deg, false);
-  bl.spinFor(fwd, Drive, deg, false);
-  
-  fr.spinFor(fwd, Drive, deg, false);
-  mr.spinFor(fwd, Drive, deg, false);
-  br.spinFor(fwd, Drive, deg, true);
+  L.spinFor(fwd, 1.25*Drive, deg, false);
+  R.spinFor(fwd, 1.25*Drive, deg, false);
 }
 
 void RobotDriveRev(double Drive) {
-  fl.spinFor(reverse, Drive, deg, false);
-  ml.spinFor(reverse, Drive, deg, false);
-  bl.spinFor(reverse, Drive, deg, false);
-  
-  fr.spinFor(reverse, Drive, deg, false);
-  mr.spinFor(reverse, Drive, deg, false);
-  br.spinFor(reverse, Drive, deg, true);
+  L.spinFor(reverse, 1.25*Drive, deg, false);
+  R.spinFor(reverse, 1.25*Drive, deg, false);
 }
 
 void RobotLeftTurn(double Turn) {
@@ -120,8 +110,8 @@ void RobotLeftTurn(double Turn) {
 
   while (fabs(inert.rotation(degrees)) < Turn) {
     double error = Turn - fabs(inert.rotation(degrees));
-    L.spin(reverse, 5 + error, pct);
-    R.spin(fwd, 5 + error, pct);
+    L.spin(reverse, 5 + 0.4*error, pct);
+    R.spin(fwd, 5 + 0.4*error, pct);
     wait(20, msec);
   }
 
@@ -135,8 +125,8 @@ void RobotRightTurn(double Turn) {
 
   while (fabs(inert.rotation(degrees)) < Turn) {
     double error = Turn - fabs(inert.rotation(degrees));
-    L.spin(fwd, 5 + error,pct);
-    R.spin(reverse, 5 + error,pct);
+    L.spin(fwd, 5 + 0.4*error,pct);
+    R.spin(reverse, 5 + 0.4*error,pct);
     wait(20, msec);
   }
 
@@ -161,9 +151,9 @@ void AutonDriveSpeed(double Speed){
 bool PidOn = false;
 
 int pid(double target) {
-  double kP = 0.00401;
-  double kI = 0.006;
-  double kD = 0.015;
+  double kP = 0.00055;//0.015 //0.002525
+  double kI = 0.0;//0.05 //0.027
+  double kD = 0.0;//0.01 //0.0174
   double error = 0;
   double integral = 0;
   double derivative = 0;
@@ -202,8 +192,7 @@ int pid(double target) {
     asian.Screen.setCursor(1, 1);
     asian.Screen.print(error);
     wait(20,msec);
-
-    if (error > -5 && error < 5) {
+    if (error > -15 && error < 15) { //30 originally
       return 0;
     }
 

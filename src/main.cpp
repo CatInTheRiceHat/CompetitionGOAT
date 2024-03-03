@@ -24,9 +24,17 @@ void autonomous(void) {
   L.setStopping(brake);
   R.setStopping(brake);
   PidOn = true;
-  pid(2300);
+  pid(2000);
   wait(100,msec);
   RobotRightTurn(90);
+  wait(50,msec);
+  intake.spin(reverse, 100, pct);
+  wait(1,sec);
+  intake.stop();
+  wait(50,msec);
+  RobotDriveFwd(500);
+  wait(50,msec);
+  pid(-1000);
   if (display == 1) {auton1();}
   if (display == 2) {auton2();}
   if (display == 3) {auton3();}
