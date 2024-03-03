@@ -179,7 +179,7 @@ void usercontrol(void) {
 
     // TemperatureCheck
     TemperatureCheck();
-    wait(20, msec);      
+    wait(10, msec);      
   } 
 }
 
