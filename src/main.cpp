@@ -123,10 +123,10 @@ void usercontrol(void) {
     }
 
     // Intake
-    if (asian.ButtonR1.pressing()) {
+    if (asian.ButtonR1.pressing()==true) {
       intake.spin(fwd, 100, pct);
     }
-    else if (asian.ButtonR2.pressing()) {
+    else if (asian.ButtonR2.pressing()==true) {
       intake.spin(reverse, 100, pct);
     }
     else {
