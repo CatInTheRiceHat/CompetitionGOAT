@@ -48,7 +48,7 @@ bool Hang = false;
 // Temperature Check
 // ........................................................................
 
-void TemperatureCheck(){
+void TemperatureCheck() {
 
   bool flhot = false;
   bool mlhot = false;
@@ -113,7 +113,7 @@ void usercontrol(void) {
     }
 
     // Catapult Down
-    if (asian.ButtonL2.pressing()){
+    if (asian.ButtonL2.pressing()) {
       catapult.spinToPosition(340, deg);
       wait(10, msec);
     }
@@ -123,10 +123,10 @@ void usercontrol(void) {
     }
 
     // Intake
-    if (asian.ButtonR1.pressing()){
+    if (asian.ButtonR1.pressing()) {
       intake.spin(fwd, 100, pct);
     }
-    else if (asian.ButtonR2.pressing()){
+    else if (asian.ButtonR2.pressing()) {
       intake.spin(reverse, 100, pct);
     }
     else {
@@ -134,7 +134,7 @@ void usercontrol(void) {
     }
 
     // Wings
-    if (asian.ButtonX.pressing()){
+    if (asian.ButtonX.pressing()) {
       if (!WedgeWingsTog) {
         wedgewings.set(1);
         wait(10, msec);
@@ -147,7 +147,7 @@ void usercontrol(void) {
       }
     }
 
-    if (asian.ButtonB.pressing()){
+    if (asian.ButtonB.pressing()) {
       if (!VertWingsTog) {
         vertwings.set(1);
         wait(10, msec);
@@ -161,7 +161,7 @@ void usercontrol(void) {
     }
 
     // Blocker
-    if (asian.ButtonUp.pressing()){
+    if (asian.ButtonUp.pressing()) {
       if (!Hang) {
         hang.set(1);
         wait(10, msec);
@@ -169,7 +169,7 @@ void usercontrol(void) {
       }
     }
 
-    if (asian.ButtonDown.pressing()){
+    if (asian.ButtonDown.pressing()) {
       if (Hang) {
         hang.set(0);
         wait(10, msec);
