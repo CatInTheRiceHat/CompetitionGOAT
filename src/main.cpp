@@ -148,12 +148,12 @@ void usercontrol(void) {
     if (asian.ButtonX.pressing()) {
       if (!WedgeWingsTog) {
         wedgewings.set(1);
-        wait(10, msec);
+        wait(100, msec);
         WedgeWingsTog = true;
       }
       else if (WedgeWingsTog) {
         wedgewings.set(0);
-        wait(10, msec);
+        wait(100, msec);
         WedgeWingsTog = false;
       }
     }
@@ -161,12 +161,12 @@ void usercontrol(void) {
     if (asian.ButtonB.pressing()) {
       if (!VertWingsTog) {
         vertwings.set(1);
-        wait(10, msec);
+        wait(100, msec);
         VertWingsTog = true;
       }
       else if (VertWingsTog) {
         vertwings.set(0);
-        wait(10, msec);
+        wait(100, msec);
         VertWingsTog = false;
       }
     }
@@ -186,6 +186,10 @@ void usercontrol(void) {
         wait(10, msec);
         Hang = false;
       }
+    }
+
+    if(asian.ButtonY.pressing()){
+      auton2();
     }
 
     // TemperatureCheck

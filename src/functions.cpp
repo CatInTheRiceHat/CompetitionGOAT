@@ -9,9 +9,9 @@ using namespace vex;
 void describe(int number) {
   asian.Screen.setCursor(4, 1);
 
-  if (number == 1) {asian.Screen.print("Elims OZ 6 Tri Goal Rush");}
-  else if (number == 2) {asian.Screen.print("Elims DZ 4 Tri");}
-  else if (number == 3) {asian.Screen.print("Quals DZ AWP + 3 Tri");}
+  if (number == 1) {asian.Screen.print("RS 6 Triball");}
+  else if (number == 2) {asian.Screen.print("AWP LS + Preload");}
+  else if (number == 3) {asian.Screen.print("AWP RS");}
   else if (number == 4) {asian.Screen.print("Auton Skills 190+");}
 }
 
@@ -73,19 +73,17 @@ void Inertial() {
   if (inert.isCalibrating()) {
     asian.Screen.clearScreen();
     asian.Screen.setCursor(1, 1);
-    asian.rumble(rumbleShort);
-    wait(500,msec);
 
     asian.Screen.print("Inertial is Calibrating!");
     wait(3,sec);
     
-    asian.rumble(rumbleLong);
+    asian.rumble(rumbleShort);
     wait(500,msec);
-
     asian.Screen.clearScreen();
     asian.Screen.setCursor(1, 1);
     asian.Screen.print("Done!");
     wait(500,msec);
+
 
     asian.Screen.clearScreen();
   }
