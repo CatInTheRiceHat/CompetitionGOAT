@@ -1,10 +1,7 @@
 #include "vex.h"
 
 void auton1() { // Elims OZ 6 Tri
-  pid(2350);
-  wait(100,msec);
-  RobotLeftTurn(90); //Turn 90 deg clockwis
-  wait(100,msec);
+  //ajwiofijwd
 }
 
 void auton2() { // Elims DZ 6 Tri
