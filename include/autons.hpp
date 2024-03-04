@@ -2,8 +2,17 @@
 
 void auton1() { // Elims OZ 6 Tri
   vertwings.set(1);
+  AutonDriveSpeed(100);
+  wait(1,sec);
+  RobotLeftTurn(45);
   wait(100,msec);
-  pid(500);
+  vertwings.set(0);
+  wait(1,sec);
+  RobotRightTurn(67.5);
+  wait(100,msec);
+  RobotDriveRev(500);
+  wait(100,msec);
+  pid(1000);
 }
 
 void auton2() { // Elims DZ 6 Tri

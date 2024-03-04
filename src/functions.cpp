@@ -120,7 +120,6 @@ void RobotLeftTurn(double Turn) {
 }
 
 void RobotRightTurn(double Turn) {
-  asian.Screen.print("Right turn is doing stuff");
   inert.setRotation(0,deg);
 
   while (fabs(inert.rotation(degrees)) < Turn) {
@@ -151,7 +150,7 @@ void AutonDriveSpeed(double Speed){
 bool PidOn = false;
 
 int pid(double target) {
-  double kP = 0.00055;//0.015 //0.002525
+  double kP = 0.0008;//0.015 //0.002525
   double kI = 0.0;//0.05 //0.027
   double kD = 0.0;//0.01 //0.0174
   double error = 0;
@@ -192,7 +191,7 @@ int pid(double target) {
     asian.Screen.setCursor(1, 1);
     asian.Screen.print(error);
     wait(20,msec);
-    if (error > -15 && error < 15) { //30 originally
+    if (error > -50 && error < 50) { //30 originally
       break;
     }
 

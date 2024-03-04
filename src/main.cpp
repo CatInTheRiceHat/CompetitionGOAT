@@ -24,8 +24,23 @@ void autonomous(void) {
   L.setStopping(brake);
   R.setStopping(brake);
   PidOn = true;
+  /*vertwings.set(1);
+  AutonDriveSpeed(100);
+  wait(500,msec);
+  RobotLeftTurn(67.5);
+  wait(500,msec);
+  vertwings.set(0);
+  wait(500,msec);
+  RobotRightTurn(45);
+  RobotDriveRev(1000);
+  RobotRightTurn(45);
+  RobotDriveRev(1000);
+  wait(100,msec);*/
+  pid(500);
+  RobotLeftTurn(45);
+  pid(400);
+  RobotLeftTurn(45);
   pid(1000);
-  RobotLeftTurn(90);
   if (display == 1) {auton1();}
   if (display == 2) {auton2();}
   if (display == 3) {auton3();}
@@ -181,11 +196,7 @@ void usercontrol(void) {
 
     // TemperatureCheck
     TemperatureCheck();
-    wait(10, msec);  
-
-    if (asian.ButtonY.pressing()){
-      auton1();
-    }    
+    wait(10, msec);    
   } 
 }
 
