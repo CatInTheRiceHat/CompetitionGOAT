@@ -1,7 +1,7 @@
 #include "vex.h"
 
 void auton1() { // Elims OZ 6 Tri
-  //ajwiofijwd
+  
 }
 
 void auton2() { // Elims DZ 6 Tri
