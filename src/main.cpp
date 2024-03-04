@@ -24,6 +24,8 @@ void autonomous(void) {
   L.setStopping(brake);
   R.setStopping(brake);
   PidOn = true;
+  pid(1000);
+  RobotLeftTurn(90);
   if (display == 1) {auton1();}
   if (display == 2) {auton2();}
   if (display == 3) {auton3();}
@@ -137,12 +139,12 @@ void usercontrol(void) {
     if (asian.ButtonX.pressing()) {
       if (!WedgeWingsTog) {
         wedgewings.set(1);
-        wait(10, msec);
+        wait(100, msec);
         WedgeWingsTog = true;
       }
       else if (WedgeWingsTog) {
         wedgewings.set(0);
-        wait(10, msec);
+        wait(100, msec);
         WedgeWingsTog = false;
       }
     }
@@ -150,12 +152,12 @@ void usercontrol(void) {
     if (asian.ButtonB.pressing()) {
       if (!VertWingsTog) {
         vertwings.set(1);
-        wait(10, msec);
+        wait(100, msec);
         VertWingsTog = true;
       }
       else if (VertWingsTog) {
         vertwings.set(0);
-        wait(10, msec);
+        wait(100, msec);
         VertWingsTog = false;
       }
     }
@@ -179,7 +181,11 @@ void usercontrol(void) {
 
     // TemperatureCheck
     TemperatureCheck();
-    wait(10, msec);      
+    wait(10, msec);  
+
+    if (asian.ButtonY.pressing()){
+      auton1();
+    }    
   } 
 }
 

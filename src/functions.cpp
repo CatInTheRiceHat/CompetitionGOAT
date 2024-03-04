@@ -9,13 +9,13 @@ using namespace vex;
 void describe(int number) {
   asian.Screen.setCursor(4, 1);
 
-  if (number == 1) {asian.Screen.print("Elims OZ 6 Tri Goal Rush");}
-  else if (number == 2) {asian.Screen.print("Elims DZ 4 Tri");}
-  else if (number == 3) {asian.Screen.print("Quals DZ AWP + 3 Tri");}
-  else if (number == 4) {asian.Screen.print("Auton Skills 190+");}
+  if (number == 1) {asian.Screen.print("Quals L AWP");}
+  else if (number == 2) {asian.Screen.print("Elims R 6 Tri");}
+  else if (number == 3) {asian.Screen.print("Elims L 6 Tri");}
+  else if (number == 4) {asian.Screen.print("Auton Skills");}
 }
 
-int autons = 3;
+int autons = 4;
 int display = 0;
 
 void AutonSelector() {
@@ -193,7 +193,7 @@ int pid(double target) {
     asian.Screen.print(error);
     wait(20,msec);
     if (error > -15 && error < 15) { //30 originally
-      return 0;
+      break;
     }
 
     prevPower = power;

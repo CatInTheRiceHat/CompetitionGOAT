@@ -1,7 +1,9 @@
 #include "vex.h"
 
 void auton1() { // Elims OZ 6 Tri
-  
+  vertwings.set(1);
+  wait(100,msec);
+  pid(500);
 }
 
 void auton2() { // Elims DZ 6 Tri
