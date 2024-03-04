@@ -21,24 +21,27 @@ void auton1() { //Quals L AWP
 }
 
 void auton2() { // Elims R 6 Tri
-  AutonDriveSpeed(80);
+  AutonDriveSpeed(70);
   intake.spin(fwd, 100, pct);
-  pid(100);
-  wait(500,msec);
+  wait(800,msec);
   intake.stop();
-  pid(-1000);
-  vertwings.set(1);
-  RobotLeftTurn(45);
-  pid(-1500);
-  RobotLeftTurn(45);
-  RobotDriveRev(500);
+  RobotDriveRev(1900);
   wait(100,msec);
-  RobotDriveFwd(100);
-  RobotRightTurn(180);
+  RobotLeftTurn(45);
+  vertwings.set(1);
+  RobotDriveRev(900);
+  vertwings.set(0);
+  RobotLeftTurn(37.5);
+  wait(100,msec);
+  RobotDriveRev(600);
+  wait(100,msec);
+  RobotDriveFwd(150);
+  intake.spin(fwd, 100, pct);
+  RobotRightTurn(167.5);
   intake.spin(reverse, 100, pct);
   wait(500,msec);
   intake.stop();
-  RobotDriveFwd(100);
+  RobotDriveFwd(350);
   wait(100,msec);
   pid(-250);
 }

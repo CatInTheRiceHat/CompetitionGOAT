@@ -24,29 +24,6 @@ void autonomous(void) {
   L.setStopping(brake);
   R.setStopping(brake);
   PidOn = true;
-  AutonDriveSpeed(70);
-  intake.spin(fwd, 100, pct);
-  wait(800,msec);
-  intake.stop();
-  RobotDriveRev(1900);
-  wait(100,msec);
-  RobotLeftTurn(45);
-  vertwings.set(1);
-  RobotDriveRev(900);
-  vertwings.set(0);
-  RobotLeftTurn(37.5);
-  wait(100,msec);
-  RobotDriveRev(600);
-  wait(100,msec);
-  RobotDriveFwd(150);
-  intake.spin(fwd, 100, pct);
-  RobotRightTurn(167.5);
-  intake.spin(reverse, 100, pct);
-  wait(500,msec);
-  intake.stop();
-  RobotDriveFwd(350);
-  wait(100,msec);
-  pid(-250);
   if (display == 1) {auton1();}
   if (display == 2) {auton2();}
   if (display == 3) {auton3();}
