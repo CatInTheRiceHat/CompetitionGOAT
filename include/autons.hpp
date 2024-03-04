@@ -1,18 +1,23 @@
 #include "vex.h"
 
-void auton1() { // Elims OZ 6 Tri
+void auton1() { //Quals L AWP
   vertwings.set(1);
-  AutonDriveSpeed(100);
-  wait(1,sec);
-  RobotLeftTurn(45);
-  wait(100,msec);
+  AutonDriveSpeed(80);
+  wait(500,msec);
+  RobotLeftTurn(67.5);
+  wait(500,msec);
   vertwings.set(0);
-  wait(1,sec);
-  RobotRightTurn(67.5);
-  wait(100,msec);
+  wait(500,msec);
+  RobotRightTurn(45);
+  RobotDriveRev(600);
+  RobotRightTurn(35);
   RobotDriveRev(500);
   wait(100,msec);
-  pid(1000);
+  pid(500);
+  RobotLeftTurn(40);
+  pid(1500);
+  RobotLeftTurn(20);
+  pid(990);
 }
 
 void auton2() { // Elims DZ 6 Tri
