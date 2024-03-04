@@ -11,11 +11,12 @@ void describe(int number) {
 
   if (number == 1) {asian.Screen.print("Quals L AWP");}
   else if (number == 2) {asian.Screen.print("Elims R 6 Tri");}
-  else if (number == 3) {asian.Screen.print("Elims L 6 Tri");}
+  else if (number == 3) {asian.Screen.print("Elims R 5 Tri Goal Rush");}
+  else if (number == 4) {asian.Screen.print("Elims L 6 Tri");}
   else if (number == 4) {asian.Screen.print("Auton Skills");}
 }
 
-int autons = 4;
+int autons = 5;
 int display = 0;
 
 void AutonSelector() {
@@ -150,7 +151,7 @@ void AutonDriveSpeed(double Speed){
 bool PidOn = false;
 
 int pid(double target) {
-  double kP = 0.0008;//0.015 //0.002525
+  double kP = 0.00085;//0.015 //0.002525
   double kI = 0.0;//0.05 //0.027
   double kD = 0.0;//0.01 //0.0174
   double error = 0;

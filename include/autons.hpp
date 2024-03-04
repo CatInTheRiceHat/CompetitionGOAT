@@ -1,52 +1,46 @@
 #include "vex.h"
 
 void auton1() { //Quals L AWP
-  vertwings.set(1);
+  vertwings.set(1); //Open Wings
   AutonDriveSpeed(80);
   wait(500,msec);
-  RobotLeftTurn(67.5);
+  RobotLeftTurn(67.5); //Turn to get triball out
   wait(500,msec);
-  vertwings.set(0);
+  vertwings.set(0); //Close Wings
   wait(500,msec);
-  RobotRightTurn(45);
+  RobotRightTurn(45); //Push Ali Tri
   RobotDriveRev(600);
   RobotRightTurn(35);
   RobotDriveRev(500);
   wait(100,msec);
-  pid(500);
+  pid(500); //Turn to the elv bar
   RobotLeftTurn(40);
   pid(1500);
   RobotLeftTurn(20);
   pid(990);
 }
 
-void auton2() { // Elims DZ 6 Tri
+void auton2() { // Elims R 6 Tri
   AutonDriveSpeed(80);
-  RobotDriveFwd(1); //Drive behind the double white line
-  wait(250,msec);
-  RobotLeftTurn(1); //Turn 90 deg counterclockwise
-  wait(250,msec);
-  AutonDriveSpeed(100);
-  intake.spin(reverse, 100, pct); //Score and push
-  RobotDriveFwd(1);
-  wait(100,msec);
-  RobotDriveRev(1); //Drive back to any reasonable point
+  intake.spin(fwd, 100, pct);
+  pid(100);
+  wait(500,msec);
   intake.stop();
-  AutonDriveSpeed(80);
-  RobotRightTurn(1); //Turn 135 deg clockwise
-  wait(250,msec);
-  intake.spin(fwd, 100, pct); //Intake triball and DON'T CROSS THE DOUBLE WHITE LINE
-  RobotDriveFwd(1);
-  wait(250,msec);
-  RobotDriveRev(1); //Go back same distance, stay on double line
-  wait(250,msec);
-  RobotLeftTurn(1); //Turn 135 deg counterclockwise
-  wait(250,msec);
-  AutonDriveSpeed(100);
-  intake.spin(reverse, 100, pct); //Score triball
-  RobotDriveFwd(1);
+  pid(-1000);
+  vertwings.set(1);
+  RobotLeftTurn(45);
+  pid(-1500);
+  RobotLeftTurn(45);
+  RobotDriveRev(500);
   wait(100,msec);
-  RobotDriveRev(1); //Drive back and prepare for driver practice
+  RobotDriveFwd(100);
+  RobotRightTurn(180);
+  intake.spin(reverse, 100, pct);
+  wait(500,msec);
+  intake.stop();
+  RobotDriveFwd(100);
+  wait(100,msec);
+  pid(-250);
 }
 
 void auton3() { //Quals DZ AWP
