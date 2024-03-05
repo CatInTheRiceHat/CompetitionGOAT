@@ -160,7 +160,7 @@ void usercontrol(void) {
       }
     }
 
-    // Blocker
+    // Hang
     if (asian.ButtonUp.pressing()) {
       if (!Hang) {
         hang.set(1);
