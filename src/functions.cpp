@@ -9,13 +9,14 @@ using namespace vex;
 void describe(int number) {
   asian.Screen.setCursor(4, 1);
 
-  if (number == 1) {asian.Screen.print("RS 6 Triball");}
-  else if (number == 2) {asian.Screen.print("AWP LS + Preload");}
-  else if (number == 3) {asian.Screen.print("AWP RS");}
-  else if (number == 4) {asian.Screen.print("Auton Skills 190+");}
+  if (number == 1) {asian.Screen.print("Quals L AWP");}
+  else if (number == 2) {asian.Screen.print("Elims R 6 Tri");}
+  else if (number == 3) {asian.Screen.print("Elims R 5 Tri Goal Rush");}
+  else if (number == 4) {asian.Screen.print("Elims L 6 Tri");}
+  else if (number == 4) {asian.Screen.print("Auton Skills");}
 }
 
-int autons = 3;
+int autons = 5;
 int display = 0;
 
 void AutonSelector() {
@@ -95,12 +96,12 @@ void Inertial() {
 
 void RobotDriveFwd(double Drive) {
   L.spinFor(fwd, Drive, deg, false);
-  R.spinFor(fwd, Drive, deg, false);
+  R.spinFor(fwd, Drive, deg, true);
 }
 
 void RobotDriveRev(double Drive) {
   L.spinFor(reverse, Drive, deg, false);
-  R.spinFor(reverse, Drive, deg, false);
+  R.spinFor(reverse, Drive, deg, true);
 }
 
 void RobotLeftTurn(double Turn) {
@@ -118,7 +119,6 @@ void RobotLeftTurn(double Turn) {
 }
 
 void RobotRightTurn(double Turn) {
-  asian.Screen.print("Right turn is doing stuff");
   inert.setRotation(0,deg);
 
   while (fabs(inert.rotation(degrees)) < Turn) {
@@ -149,7 +149,7 @@ void AutonDriveSpeed(double Speed){
 bool PidOn = false;
 
 int pid(double target) {
-  double kP = 0.00055;//0.015 //0.002525
+  double kP = 0.00085;//0.015 //0.002525
   double kI = 0.0;//0.05 //0.027
   double kD = 0.0;//0.01 //0.0174
   double error = 0;
@@ -190,8 +190,8 @@ int pid(double target) {
     asian.Screen.setCursor(1, 1);
     asian.Screen.print(error);
     wait(20,msec);
-    if (error > -15 && error < 15) { //30 originally
-      return 0;
+    if (error > -50 && error < 50) { //30 originally
+      break;
     }
 
     prevPower = power;

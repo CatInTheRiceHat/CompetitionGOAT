@@ -1,17 +1,52 @@
 #include "vex.h"
 
-void auton1() { // Elims OZ 6 Tri
-  //ajwiofijwd
+void auton1() { //Quals L AWP
+  vertwings.set(1); //Open Wings
+  AutonDriveSpeed(80);
+  wait(500,msec);
+  RobotLeftTurn(67.5); //Turn to get triball out
+  wait(500,msec);
+  vertwings.set(0); //Close Wings
+  wait(500,msec);
+  RobotRightTurn(45); //Push Ali Tri
+  RobotDriveRev(600);
+  RobotRightTurn(35);
+  RobotDriveRev(500);
+  wait(100,msec);
+  pid(500); //Turn to the elv bar
+  RobotLeftTurn(40);
+  pid(1500);
+  RobotLeftTurn(20);
+  pid(990);
 }
 
-void auton2() { // LS AWP + Preload
+void auton2() { // Elims R 6 Tri
+  AutonDriveSpeed(70);
+  intake.spin(fwd, 100, pct);
+  wait(800,msec);
+  intake.stop();
+  RobotDriveRev(1900);
+  wait(100,msec);
+  RobotLeftTurn(45);
   vertwings.set(1);
-  wait(200,msec);
-  pid(500);
-  wait(200,msec);
+  RobotDriveRev(900);
+  vertwings.set(0);
+  RobotLeftTurn(37.5);
+  wait(100,msec);
+  RobotDriveRev(600);
+  wait(100,msec);
+  RobotDriveFwd(150);
+  intake.spin(fwd, 100, pct);
+  RobotRightTurn(167.5);
+  intake.spin(reverse, 100, pct);
+  wait(500,msec);
+  intake.stop();
+  RobotDriveFwd(350);
+  wait(100,msec);
+  pid(-250);
 }
 
-void auton3() { //Quals DZ AWP
+void auton3() { //Elims
   AutonDriveSpeed(50);
   RobotDriveFwd(2500); //Drive to the middle of the double white line
   wait(250,msec);
