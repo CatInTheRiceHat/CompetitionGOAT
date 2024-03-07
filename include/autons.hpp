@@ -46,7 +46,7 @@ void auton2() { // Elims R 6 Tri
   pid(-250);
 }
 
-void auton3() { //Elims 3 triball
+void auton3() { //Elims
   AutonDriveSpeed(50);
   RobotDriveFwd(2500); //Drive to the middle of the double white line
   wait(250,msec);
