@@ -74,19 +74,17 @@ void Inertial() {
   if (inert.isCalibrating()) {
     asian.Screen.clearScreen();
     asian.Screen.setCursor(1, 1);
-    asian.rumble(rumbleShort);
-    wait(500,msec);
 
     asian.Screen.print("Inertial is Calibrating!");
     wait(3,sec);
     
-    asian.rumble(rumbleLong);
+    asian.rumble(rumbleShort);
     wait(500,msec);
-
     asian.Screen.clearScreen();
     asian.Screen.setCursor(1, 1);
     asian.Screen.print("Done!");
     wait(500,msec);
+
 
     asian.Screen.clearScreen();
   }

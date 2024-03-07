@@ -177,6 +177,10 @@ void usercontrol(void) {
       }
     }
 
+    if(asian.ButtonY.pressing()){
+      auton2();
+    }
+
     // TemperatureCheck
     TemperatureCheck();
     wait(10, msec);    
