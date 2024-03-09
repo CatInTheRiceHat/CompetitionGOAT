@@ -24,6 +24,7 @@ void autonomous(void) {
   L.setStopping(brake);
   R.setStopping(brake);
   PidOn = true;
+  auton2();
   if (display == 1) {auton1();}
   if (display == 2) {auton2();}
   if (display == 3) {auton3();}

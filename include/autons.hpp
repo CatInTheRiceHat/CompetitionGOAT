@@ -1,6 +1,6 @@
 #include "vex.h"
 
-void auton1() { //Quals L AWP
+void auton1() { //Quals L AWP 1 Tri
   vertwings.set(1); //Open Wings
   AutonDriveSpeed(80);
   wait(500,msec);
@@ -13,37 +13,89 @@ void auton1() { //Quals L AWP
   RobotRightTurn(35);
   RobotDriveRev(500);
   wait(100,msec);
-  pid(500); //Turn to the elv bar
+  pid(10.64); //Turn to the elv bar
   RobotLeftTurn(40);
-  pid(1500);
+  pid(31.91);
   RobotLeftTurn(20);
-  pid(990);
+  pid(21.06);
 }
 
-void auton2() { // Elims R 6 Tri
+void auton2() { // Elims R 5 Tri -> if we're doing a long drive we should change the time variable
   AutonDriveSpeed(70);
-  intake.spin(fwd, 100, pct);
-  wait(800,msec);
+
+  intake.spin(fwd, 100, pct); //get the triball under the elevation bar
+  wait(100, msec);
+  RobotDriveFwd(80);
+  wait(500,msec);
   intake.stop();
+
+  AutonDriveSpeed(80);//drive near the matchload bar
   RobotDriveRev(1900);
   wait(100,msec);
-  RobotLeftTurn(45);
-  vertwings.set(1);
-  RobotDriveRev(900);
+  RobotLeftTurn(40);
+
+  vertwings.set(1);//take ball outta matchload zone on the way
+  RobotDriveRev(750);
+  AutonDriveSpeed(40);
+  RobotDriveRev(630);
+  AutonDriveSpeed(70);
   vertwings.set(0);
-  RobotLeftTurn(37.5);
+
+  RobotLeftTurn(40);//get perpendicular to the goal
   wait(100,msec);
+
+  /*RobotDriveRev(600);
+  wait(100,msec);
+  RobotDriveFwd(100);
+  wait(500,msec);*/
+
+  RobotRightTurn(175); //spit out the triball
+  intake.spin(reverse, 100, pct);
+  wait(100,msec);
+  intake.stop();
+
+  RobotLeftTurn(173);
+
+  wait(500,msec);
+  
+  AutonDriveSpeed(100);
   RobotDriveRev(600);
-  wait(100,msec);
-  RobotDriveFwd(150);
+  AutonDriveSpeed(30);
+
+  RobotDriveFwd(400);
+
+  AutonDriveSpeed(60);
+  wait(100,msec); // get the third triball thats the safest
+  RobotRightTurn(95);
+  
   intake.spin(fwd, 100, pct);
-  RobotRightTurn(167.5);
+  RobotDriveFwd(2280,1500);
+  wait(100,msec);
+  intake.stop(hold);
+
+  AutonDriveSpeed(100);
+  RobotDriveRev(100);//score third triball
+  wait(100,msec);
+  RobotRightTurn(104);
+  wait(100,msec);
+  RobotDriveFwd(600);
+  wait(100,msec);
+  RobotRightTurn(42);
+  wait(100,msec);
+
   intake.spin(reverse, 100, pct);
   wait(500,msec);
   intake.stop();
-  RobotDriveFwd(350);
+
   wait(100,msec);
-  pid(-250);
+  RobotRightTurn(172);
+  wait(100,msec);
+  RobotDriveRev(800);
+
+
+  //pid(64.5);
+  wait(500,msec);
+  intake.stop();
 }
 
 void auton3() { //Elims

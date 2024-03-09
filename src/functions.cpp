@@ -9,10 +9,10 @@ using namespace vex;
 void describe(int number) {
   asian.Screen.setCursor(4, 1);
 
-  if (number == 1) {asian.Screen.print("Quals L AWP");}
-  else if (number == 2) {asian.Screen.print("Elims R 6 Tri");}
-  else if (number == 3) {asian.Screen.print("Elims R 5 Tri Goal Rush");}
-  else if (number == 4) {asian.Screen.print("Elims L 6 Tri");}
+  if (number == 1) {asian.Screen.print("Quals L AWP 1 Tri");}
+  else if (number == 2) {asian.Screen.print("Elims R 5 Tri");}
+  else if (number == 3) {asian.Screen.print("Elims L 3 Tri Goal Rush with AWP");}
+  else if (number == 4) {asian.Screen.print("Elims L 5 Tri");}
   else if (number == 4) {asian.Screen.print("Auton Skills");}
 }
 
@@ -94,14 +94,30 @@ void Inertial() {
 // Robot Autonomous Programs
 // ........................................................................
 
-void RobotDriveFwd(double Drive) {
+void RobotDriveFwd(double Drive, double timeLimit = 500) {
+  L.setPosition(0,deg);
+  R.setPosition(0,deg);
+  Brain.Timer.clear();
   L.spinFor(fwd, Drive, deg, false);
-  R.spinFor(fwd, Drive, deg, true);
+  R.spinFor(fwd, Drive, deg, false);
+  while(fabs(Drive - (L.position(deg) + R.position(deg))/2) > 30 && Brain.Timer.time(msec) < timeLimit){
+    wait(20, msec);
+  }
+  L.stop(coast);
+  R.stop(coast);
 }
 
-void RobotDriveRev(double Drive) {
+void RobotDriveRev(double Drive, double timeLimit = 500) {
+  L.setPosition(0,deg);
+  R.setPosition(0,deg);
+  Brain.Timer.clear();
   L.spinFor(reverse, Drive, deg, false);
-  R.spinFor(reverse, Drive, deg, true);
+  R.spinFor(reverse, Drive, deg, false);
+  while(fabs(Drive - (L.position(deg) + R.position(deg))/2) > 30 && Brain.Timer.time(msec) < timeLimit){
+    wait(20, msec);
+  }
+  L.stop(coast);
+  R.stop(coast);
 }
 
 void RobotLeftTurn(double Turn) {
@@ -109,8 +125,8 @@ void RobotLeftTurn(double Turn) {
 
   while (fabs(inert.rotation(degrees)) < Turn) {
     double error = Turn - fabs(inert.rotation(degrees));
-    L.spin(reverse, 5 + 0.4*error, pct);
-    R.spin(fwd, 5 + 0.4*error, pct);
+    L.spin(reverse, 1.5 + 0.4*error, pct);
+    R.spin(fwd, 1.5 + 0.4*error, pct);
     wait(20, msec);
   }
 
@@ -123,8 +139,8 @@ void RobotRightTurn(double Turn) {
 
   while (fabs(inert.rotation(degrees)) < Turn) {
     double error = Turn - fabs(inert.rotation(degrees));
-    L.spin(fwd, 5 + 0.4*error,pct);
-    R.spin(reverse, 5 + 0.4*error,pct);
+    L.spin(fwd, 1.5 + 0.4*error,pct);
+    R.spin(reverse, 1.5 + 0.4*error,pct);
     wait(20, msec);
   }
 
@@ -148,6 +164,8 @@ void AutonDriveSpeed(double Speed){
 
 bool PidOn = false;
 
+//
+
 int pid(double target) {
   double kP = 0.00085;//0.015 //0.002525
   double kI = 0.0;//0.05 //0.027
@@ -160,11 +178,11 @@ int pid(double target) {
   double power = 0;
   double prevPower = 0;
 
-  L.setPosition(0,deg);
-  R.setPosition(0,deg);
+  L.setPosition(0,turns);
+  R.setPosition(0,turns);
 
   while (PidOn) {
-    double currentDist = (L.position(deg) + R.position(deg))/2;
+    double currentDist = (L.position(turns) + R.position(turns))/2 * 0.75 * 3.25 * M_PI;
 
     error = target - currentDist;
     if(fabs(integral) > 200) {
@@ -190,7 +208,7 @@ int pid(double target) {
     asian.Screen.setCursor(1, 1);
     asian.Screen.print(error);
     wait(20,msec);
-    if (error > -50 && error < 50) { //30 originally
+    if (error > -1 && error < 1) { //30 originally
       break;
     }
 

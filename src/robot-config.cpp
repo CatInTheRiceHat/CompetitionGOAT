@@ -19,9 +19,9 @@ motor_group L = motor_group(ml, bl, fl);
 motor_group R = motor_group(mr, br, fr);
 motor intake = motor(PORT17, ratio6_1, false);
 motor catapult = motor(PORT4, ratio36_1, false);
-pneumatics wedgewings = pneumatics(Brain.ThreeWirePort.A);
-pneumatics vertwings = pneumatics(Brain.ThreeWirePort.C);
-pneumatics hang = pneumatics(Brain.ThreeWirePort.D);
+pneumatics wedgewings = pneumatics(Brain.ThreeWirePort.D);
+pneumatics vertwings = pneumatics(Brain.ThreeWirePort.B);
+pneumatics hang = pneumatics(Brain.ThreeWirePort.C);
 inertial inert = inertial(PORT15);
 
 // VEXcode generated functions
