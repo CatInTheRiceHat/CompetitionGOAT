@@ -134,7 +134,7 @@ void usercontrol(void) {
     }
 
     // Wings
-    if (asian.ButtonX.pressing()) {
+    if (asian.ButtonB.pressing()) {
       if (!WedgeWingsTog) {
         wedgewings.set(1);
         wait(100, msec);
@@ -147,7 +147,7 @@ void usercontrol(void) {
       }
     }
 
-    if (asian.ButtonB.pressing()) {
+    if (asian.ButtonX.pressing()) {
       if (!VertWingsTog) {
         vertwings.set(1);
         wait(100, msec);

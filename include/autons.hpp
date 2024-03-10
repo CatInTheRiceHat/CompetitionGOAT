@@ -57,7 +57,7 @@ void auton1() { //Quals L AWP 1 Tri
 }
 
 void auton2() { // Elims R 5 Tri -> if we're doing a long drive we should change the time variable
-  AutonDriveSpeed(20);
+  AutonDriveSpeed(80);
 
   intake.spin(fwd, 100, pct); //get the triball under the elevation bar
   wait(100,msec);
@@ -66,7 +66,7 @@ void auton2() { // Elims R 5 Tri -> if we're doing a long drive we should change
   intake.stop();  
 
 
-  AutonDriveSpeed(50);//drive near the matchload bar
+  AutonDriveSpeed(80);//drive near the matchload bar
   RobotDriveRev(1900,1500);
   wait(100,msec);
   RobotLeftTurn(41);
@@ -144,7 +144,7 @@ void auton2() { // Elims R 5 Tri -> if we're doing a long drive we should change
 
 void auton3() { //Elims
   AutonDriveSpeed(50);
-  RobotDriveFwd(2650,1000); //Drive to the middle of the double white line
+  RobotDriveFwd(2700,1000); //Drive to the middle of the double white line
   wait(250,msec);
   RobotRightTurn(86); //Turn 90 deg clockwise
   wait(250,msec);
@@ -155,20 +155,20 @@ void auton3() { //Elims
   wait(500,msec);
   intake.stop();
 
-  RobotDriveRev(100);
+  RobotDriveRev(200);
   wait(100,msec);
 
-  RobotRightTurn(180);
+  RobotRightTurn(176);
   wait(100,msec);
 
   AutonDriveSpeed(50);
-  RobotDriveRev(325);
+  RobotDriveRev(425);
   wait(300,msec);
 
   RobotDriveFwd(100);
   wait(100,msec);
 
-  AutonDriveSpeed(50);
+  /*AutonDriveSpeed(50);
   
   RobotLeftTurn(25);
   wait(250,msec);
@@ -232,9 +232,9 @@ void auton3() { //Elims
   wait(100,msec);
   intake.stop();
 
-  RobotDriveRev(400);
+  RobotDriveRev(400);*/
 }
 
 void auton4() { // Auton Skills 190+
-  
+
 }
