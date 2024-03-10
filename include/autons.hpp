@@ -1,160 +1,242 @@
 #include "vex.h"
 
 void auton1() { //Quals L AWP 1 Tri
-  vertwings.set(1); //Open Wings
-  AutonDriveSpeed(80);
-  wait(500,msec);
-  RobotLeftTurn(67.5); //Turn to get triball out
-  wait(500,msec);
-  vertwings.set(0); //Close Wings
-  wait(500,msec);
-  RobotRightTurn(45); //Push Ali Tri
-  RobotDriveRev(600);
-  RobotRightTurn(35);
-  RobotDriveRev(500);
   wait(100,msec);
-  pid(10.64); //Turn to the elv bar
-  RobotLeftTurn(40);
-  pid(31.91);
-  RobotLeftTurn(20);
-  pid(21.06);
+  vertwings.set(1); //Take triball out of the matchload zone
+  wait(100,msec);
+  RobotLeftTurn(40); 
+  wait(100,msec);
+  vertwings.set(0);
+
+  AutonDriveSpeed(40);
+
+  wait(100,msec);//push alliance triball towards the goal
+  RobotRightTurn(35);
+  wait(100,msec);
+
+  AutonDriveSpeed(20);
+
+  RobotDriveRev(1650,2000);
+
+  AutonDriveSpeed(40);
+  wait(100,msec);
+  RobotRightTurn(41);
+
+  wait(100,msec);
+
+  AutonDriveSpeed(100);
+
+  RobotDriveRev(400);
+  wait(100,msec);
+  RobotDriveFwd(200);
+  wait(100,msec);
+  RobotRightTurn(5);
+  wait(100,msec);
+  RobotDriveRev(400);
+
+  AutonDriveSpeed(40);
+  //vertwings.set(0);
+
+  wait(100,msec);
+  RobotDriveFwd(70);
+  wait(100,msec);
+  RobotRightTurn(88);
+  wait(100,msec);
+
+  RobotDriveFwd(250);
+
+  AutonDriveSpeed(30);
+
+  RobotDriveRev(2600,3000);
+
+  wait(100,msec);
+  vertwings.set(1);
+  wait(200,msec);
+
+  RobotLeftTurn(8);
+
 }
 
 void auton2() { // Elims R 5 Tri -> if we're doing a long drive we should change the time variable
-  AutonDriveSpeed(70);
+  AutonDriveSpeed(20);
 
   intake.spin(fwd, 100, pct); //get the triball under the elevation bar
-  wait(100, msec);
+  wait(100,msec);
   RobotDriveFwd(80);
   wait(500,msec);
-  intake.stop();
+  intake.stop();  
 
-  AutonDriveSpeed(80);//drive near the matchload bar
-  RobotDriveRev(1900);
+
+  AutonDriveSpeed(50);//drive near the matchload bar
+  RobotDriveRev(1900,1500);
   wait(100,msec);
-  RobotLeftTurn(40);
+  RobotLeftTurn(41);
+  wait(100,msec);
 
-  vertwings.set(1);//take ball outta matchload zone on the way
-  RobotDriveRev(750);
-  AutonDriveSpeed(40);
-  RobotDriveRev(630);
+  //take ball outta matchload zone on the way
+  RobotDriveRev(850);
+  AutonDriveSpeed(20);
+  RobotDriveRev(530);
   AutonDriveSpeed(70);
-  vertwings.set(0);
+  wait(100,msec);
 
   RobotLeftTurn(40);//get perpendicular to the goal
   wait(100,msec);
 
-  /*RobotDriveRev(600);
+  AutonDriveSpeed(100);
+
+  RobotDriveRev(600);
   wait(100,msec);
-  RobotDriveFwd(100);
-  wait(500,msec);*/
+  RobotDriveFwd(400);
+  wait(100,msec);
 
   RobotRightTurn(175); //spit out the triball
   intake.spin(reverse, 100, pct);
-  wait(100,msec);
+  wait(400,msec);
   intake.stop();
+  wait(100,msec);
 
-  RobotLeftTurn(173);
+  RobotLeftTurn(185);
+  wait(100,msec);
+  RobotRightTurn(6);
+  wait(10,msec);
 
-  wait(500,msec);
-  
+    
   AutonDriveSpeed(100);
   RobotDriveRev(600);
+  wait(100,msec);
   AutonDriveSpeed(30);
 
-  RobotDriveFwd(400);
+  RobotDriveFwd(230);
 
-  AutonDriveSpeed(60);
+  AutonDriveSpeed(100);
   wait(100,msec); // get the third triball thats the safest
-  RobotRightTurn(95);
-  
+  RobotRightTurn(85);
+  wait(100,msec);
+  RobotDriveRev(300);
+  wait(100,msec);
+  RobotDriveFwd(200);
+  wait(100,msec);
+
+  RobotRightTurn(15);
+
   intake.spin(fwd, 100, pct);
-  RobotDriveFwd(2280,1500);
+  RobotDriveFwd(2280,2000);
   wait(100,msec);
   intake.stop(hold);
 
   AutonDriveSpeed(100);
   RobotDriveRev(100);//score third triball
   wait(100,msec);
-  RobotRightTurn(104);
+  RobotRightTurn(120);
   wait(100,msec);
-  RobotDriveFwd(600);
+  RobotDriveFwd(500);
   wait(100,msec);
-  RobotRightTurn(42);
+  RobotRightTurn(85);
   wait(100,msec);
 
+  RobotDriveRev(30,200);
   intake.spin(reverse, 100, pct);
   wait(500,msec);
   intake.stop();
 
-  wait(100,msec);
-  RobotRightTurn(172);
-  wait(100,msec);
-  RobotDriveRev(800);
+  RobotDriveFwd(1200);
 
-
-  //pid(64.5);
-  wait(500,msec);
-  intake.stop();
 }
 
 void auton3() { //Elims
   AutonDriveSpeed(50);
-  RobotDriveFwd(2500); //Drive to the middle of the double white line
+  RobotDriveFwd(2650,1000); //Drive to the middle of the double white line
   wait(250,msec);
-  RobotRightTurn(525); //Turn 90 deg clockwis
+  RobotRightTurn(86); //Turn 90 deg clockwise
   wait(250,msec);
+
   AutonDriveSpeed(100);
+
   intake.spin(reverse, 100, pct); //Score and push [CHECKPOINT 1]
-  wait(100,msec);
-  RobotDriveFwd(200);
-  wait(100,msec);
-  RobotDriveRev(850); //Drive back to middle of the two tiles, ok to knock off the other triball
+  wait(500,msec);
   intake.stop();
-  AutonDriveSpeed(40);
-  RobotRightTurn(865); //Turn 135 deg clockwise
-  wait(250,msec);
-  AutonDriveSpeed(30);
-  intake.spin(fwd, 100, pct); //Intake triball and don't touch the bar
-  RobotDriveFwd(695);
-  wait(350,msec);
-  AutonDriveSpeed(25); //slow down to make it more accurate
-  RobotDriveRev(350); //Go back same distance, stay on double line
-  wait(250,msec);
-  intake.stop();
-  AutonDriveSpeed(25); //slow down the speed of turning back
-  RobotLeftTurn(850); //Turn 135 deg counterclockwise
-  wait(250,msec);
-  AutonDriveSpeed(100);
-  intake.spin(reverse, 100, pct); //Score triball
-  wait(250,msec);
-  RobotDriveFwd(1300);
+
+  RobotDriveRev(100);
   wait(100,msec);
-  AutonDriveSpeed(25);
-  RobotRightTurn(10);
-  RobotDriveRev(750); //Drive back
-  intake.stop();
-  //from here on is collecting the third triball
-  RobotLeftTurn(525);
+
+  RobotRightTurn(180);
   wait(100,msec);
-  intake.spin(fwd, 100, pct); //intake triball on the double white lines
-  wait(250,msec);
-  RobotDriveFwd(450);
-  wait(100,msec);
-  intake.stop();
-  RobotDriveRev(300);
-  wait(200,msec);
-  RobotRightTurn(573);
-  AutonDriveSpeed(20);
+
+  AutonDriveSpeed(50);
+  RobotDriveRev(325);
+  wait(300,msec);
+
   RobotDriveFwd(100);
-  wait(150,msec);
-  intake.spin(reverse, 100, pct); //SCORE IT PLS
-  wait(200,msec);
+  wait(100,msec);
+
+  AutonDriveSpeed(50);
+  
+  RobotLeftTurn(25);
+  wait(250,msec);
+
+  AutonDriveSpeed(35);
+
+  intake.spin(reverse, 100, pct);
+  RobotDriveFwd(1200,1000);
+  wait(450,msec);
+  intake.stop();
+  wait(350,msec);
+
+  AutonDriveSpeed(50);
+
+  RobotDriveRev(750);
+  wait(250,msec);
+
+  AutonDriveSpeed(50);
+
+  RobotLeftTurn(155);
+  wait(250,msec);
+
+  AutonDriveSpeed(70);
+
+  intake.spin(fwd, 70, pct);
+  wait(250,msec);
+  RobotDriveFwd(810);
+  wait(100,msec);
+
   AutonDriveSpeed(100);
-  RobotDriveFwd(1000);
+
+  RobotDriveRev(900);
+  intake.stop();
+
+  AutonDriveSpeed(80);
+
+  RobotLeftTurn(90);
+  wait(100,msec);
+
+  intake.spin(reverse, 100, pct);
+  wait(250,msec);
+  AutonDriveSpeed(25);
+  RobotDriveFwd(750);
   wait(100,msec);
   intake.stop();
-  RobotDriveRev(500);
+
+  AutonDriveSpeed(25);
+  RobotDriveRev(650);
+  wait(200,msec);
+
+  RobotRightTurn(85);
+  wait(200,msec);
+  AutonDriveSpeed(20);
+
+  intake.spin(fwd, 100, pct);
+  wait(200,msec);
+
+  AutonDriveSpeed(100);
+
+  RobotDriveFwd(1000,1000);
+  wait(100,msec);
+  intake.stop();
+
+  RobotDriveRev(400);
+
+
 }
 
 void auton4() { // Auton Skills 190+

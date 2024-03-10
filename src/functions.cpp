@@ -11,12 +11,11 @@ void describe(int number) {
 
   if (number == 1) {asian.Screen.print("Quals L AWP 1 Tri");}
   else if (number == 2) {asian.Screen.print("Elims R 5 Tri");}
-  else if (number == 3) {asian.Screen.print("Elims L 3 Tri Goal Rush with AWP");}
-  else if (number == 4) {asian.Screen.print("Elims L 5 Tri");}
+  else if (number == 3) {asian.Screen.print("Elims R 3 Tri");}
   else if (number == 4) {asian.Screen.print("Auton Skills");}
 }
 
-int autons = 5;
+int autons = 4;
 int display = 0;
 
 void AutonSelector() {
@@ -35,7 +34,7 @@ void AutonSelector() {
     if (asian.ButtonA.pressing()) {
       wait(1000, msec);
       if (asian.ButtonA.pressing()) {
-      asian.rumble(rumbleLong);
+      asian.rumble(rumbleShort);
       asian.Screen.clearScreen();
       break;
       }
@@ -78,11 +77,11 @@ void Inertial() {
     asian.Screen.print("Inertial is Calibrating!");
     wait(3,sec);
     
-    asian.rumble(rumbleShort);
     wait(500,msec);
     asian.Screen.clearScreen();
     asian.Screen.setCursor(1, 1);
     asian.Screen.print("Done!");
+    asian.rumble(rumbleShort);
     wait(500,msec);
 
 
