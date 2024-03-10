@@ -54,7 +54,6 @@ void auton1() { //Quals L AWP 1 Tri
   wait(200,msec);
 
   RobotLeftTurn(8);
-
 }
 
 void auton2() { // Elims R 5 Tri -> if we're doing a long drive we should change the time variable
@@ -141,7 +140,6 @@ void auton2() { // Elims R 5 Tri -> if we're doing a long drive we should change
   intake.stop();
 
   RobotDriveFwd(1200);
-
 }
 
 void auton3() { //Elims
@@ -235,10 +233,8 @@ void auton3() { //Elims
   intake.stop();
 
   RobotDriveRev(400);
-
-
 }
 
 void auton4() { // Auton Skills 190+
-
+  
 }
