@@ -14,9 +14,9 @@ void describe(int number) {
   asian.Screen.setCursor(4, 1);
 
   if (number == 1) {asian.Screen.print("Quals L AWP 1 Tri");}
-  else if (number == 2) {asian.Screen.print("Elims R 5 Tri");}
-  else if (number == 3) {asian.Screen.print("Elims R 3 Tri");}
-  else if (number == 4) {asian.Screen.print("Auton Skills");}
+  else if (number == 2) {asian.Screen.print("N/A");}
+  else if (number == 3) {asian.Screen.print("Elims R 4 Tri");}
+  else if (number == 4) {asian.Screen.print("Elims L 1 Tri + Goal Rush");}
 }
 
 int autons = 4;
