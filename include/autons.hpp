@@ -144,9 +144,9 @@ void auton2() { // Elims R 2.5 Tri -> if we're doing a long drive we should chan
 
 void auton3() { //Elims R 4 Tri
   AutonDriveSpeed(50);
-  RobotDriveFwd(2700,1000); //Drive to the middle of the double white line
+  RobotDriveFwd(2500,1000); //Drive to the middle of the double white line
   wait(250,msec);
-  RobotRightTurn(86); //Turn 90 deg clockwise
+  RobotRightTurn(75); //Turn 90 deg clockwise
   wait(250,msec);
 
   AutonDriveSpeed(100);
@@ -158,7 +158,7 @@ void auton3() { //Elims R 4 Tri
   RobotDriveRev(200);
   wait(100,msec);
 
-  RobotRightTurn(176);
+  RobotRightTurn(170);
   wait(100,msec);
 
   AutonDriveSpeed(50);
@@ -168,14 +168,14 @@ void auton3() { //Elims R 4 Tri
   RobotDriveFwd(100);
   wait(100,msec);
 
-  /*AutonDriveSpeed(50);
+  AutonDriveSpeed(50);
   
   RobotLeftTurn(25);
   wait(250,msec);
 
   AutonDriveSpeed(35);
 
-  intake.spin(reverse, 100, pct);
+  intake.spin(fwd, 100, pct);
   RobotDriveFwd(1200,1000);
   wait(450,msec);
   intake.stop();
@@ -183,7 +183,7 @@ void auton3() { //Elims R 4 Tri
 
   AutonDriveSpeed(50);
 
-  RobotDriveRev(750);
+  RobotDriveRev(500);
   wait(250,msec);
 
   AutonDriveSpeed(50);
@@ -193,37 +193,38 @@ void auton3() { //Elims R 4 Tri
 
   AutonDriveSpeed(70);
 
-  intake.spin(fwd, 70, pct);
+  intake.spin(reverse, 70, pct);
   wait(250,msec);
   RobotDriveFwd(810);
   wait(100,msec);
+  intake.stop();
 
   AutonDriveSpeed(100);
 
-  RobotDriveRev(900);
-  intake.stop();
+  RobotDriveRev(800,1000);
+  wait(100,msec);
 
   AutonDriveSpeed(80);
 
-  RobotLeftTurn(90);
+  RobotLeftTurn(75);
   wait(100,msec);
 
-  intake.spin(reverse, 100, pct);
+  intake.spin(fwd, 100, pct);
   wait(250,msec);
   AutonDriveSpeed(25);
-  RobotDriveFwd(750);
+  RobotDriveFwd(350);
   wait(100,msec);
   intake.stop();
 
   AutonDriveSpeed(25);
-  RobotDriveRev(650);
+  RobotDriveRev(600);
   wait(200,msec);
 
-  RobotRightTurn(85);
+  RobotRightTurn(75);
   wait(200,msec);
   AutonDriveSpeed(20);
 
-  intake.spin(fwd, 100, pct);
+  intake.spin(reverse, 100, pct);
   wait(200,msec);
 
   AutonDriveSpeed(100);
@@ -232,7 +233,8 @@ void auton3() { //Elims R 4 Tri
   wait(100,msec);
   intake.stop();
 
-  RobotDriveRev(400);*/
+  RobotDriveRev(400);
+
 }
 
 void auton4() { //Elims L 1 Tri + Goal Rush
