@@ -235,6 +235,6 @@ void auton3() { //Elims
   RobotDriveRev(400);*/
 }
 
-void auton4() { // Auton Skills 190+
+void auton4() { // Auton Skills 190+ RIP
 
 }
