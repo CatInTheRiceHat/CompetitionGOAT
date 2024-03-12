@@ -201,10 +201,10 @@ void auton3() { //Elims R 4 Tri
 
   AutonDriveSpeed(100);
 
-  RobotDriveRev(800,1000);
+  RobotDriveRev(400,1000);
   wait(100,msec);
 
-  AutonDriveSpeed(80);
+ /*AutonDriveSpeed(80);
 
   RobotLeftTurn(75);
   wait(100,msec);
@@ -233,7 +233,7 @@ void auton3() { //Elims R 4 Tri
   wait(100,msec);
   intake.stop();
 
-  RobotDriveRev(400);
+  RobotDriveRev(400);*/
 
 }
 
