@@ -1,153 +1,240 @@
 #include "vex.h"
 
-void auton1() { // Elims OZ 6 Tri
-  AutonDriveSpeed(80);
-  RobotDriveFwd(2500); //Drive to the middle of the double white line
-  wait(250,msec);
-  RobotRightTurn(575); //Turn 90 deg clockwis
-  wait(250,msec);
-  AutonDriveSpeed(100); //Make Fasta
-  intake.spin(reverse, 100, pct); //Outake
+void auton1() { //Quals L AWP 1 Tri
   wait(100,msec);
-  RobotDriveRev(650); //Drive back to middle of the two tiles, ok to knock off the other triball
-  intake.stop();
+  vertwings.set(1); //Take triball out of the matchload zone
+  wait(100,msec);
+  RobotLeftTurn(40); 
+  wait(100,msec);
+  vertwings.set(0);
+
   AutonDriveSpeed(40);
-  RobotRightTurn(900); //Turn 135 deg clockwise
-  wait(250,msec);
-  intake.spin(fwd, 100, pct); //Intake triball and don't touch the bar
-  RobotDriveFwd(780);
-  wait(250,msec);
-  RobotDriveRev(650); //Go back same distance, stay on double line
-  wait(250,msec);
-  intake.stop();
-  AutonDriveSpeed(25); //slow down the speed of turning back
-  RobotLeftTurn(860); //Turn 135 deg counterclockwise
-  wait(250,msec);
-  AutonDriveSpeed(100);
-  intake.spin(reverse, 100, pct); //Score triball
-  wait(250,msec);
-  RobotDriveFwd(1300); //PUSH
-  wait(100,msec);
-  RobotDriveRev(500); //Drive back and prepare for driver practice
-  intake.stop();
-  RobotDriveFwd(1000); //Push it in twice just to make sure it gets in
-  wait(250,msec);
-  RobotDriveRev(700); //Prepare for driver control
-}
 
-void auton2() { // Elims DZ 6 Tri
-  AutonDriveSpeed(80);
-  RobotDriveFwd(1); //Drive behind the double white line
-  wait(250,msec);
-  RobotLeftTurn(1); //Turn 90 deg counterclockwise
-  wait(250,msec);
-  AutonDriveSpeed(100);
-  intake.spin(reverse, 100, pct); //Score and push
-  RobotDriveFwd(1);
+  wait(100,msec);//push alliance triball towards the goal
+  RobotRightTurn(35);
   wait(100,msec);
-  RobotDriveRev(1); //Drive back to any reasonable point
-  intake.stop();
-  AutonDriveSpeed(80);
-  RobotRightTurn(1); //Turn 135 deg clockwise
-  wait(250,msec);
-  intake.spin(fwd, 100, pct); //Intake triball and DON'T CROSS THE DOUBLE WHITE LINE
-  RobotDriveFwd(1);
-  wait(250,msec);
-  RobotDriveRev(1); //Go back same distance, stay on double line
-  wait(250,msec);
-  RobotLeftTurn(1); //Turn 135 deg counterclockwise
-  wait(250,msec);
-  AutonDriveSpeed(100);
-  intake.spin(reverse, 100, pct); //Score triball
-  RobotDriveFwd(1);
-  wait(100,msec);
-  RobotDriveRev(1); //Drive back and prepare for driver practice
-}
 
-void auton3() { //Quals DZ AWP
-  AutonDriveSpeed(50);
-  RobotDriveFwd(2500); //Drive to the middle of the double white line
-  wait(250,msec);
-  RobotRightTurn(525); //Turn 90 deg clockwis
-  wait(250,msec);
+  AutonDriveSpeed(20);
+
+  RobotDriveRev(1650,2000);
+
+  AutonDriveSpeed(40);
+  wait(100,msec);
+  RobotRightTurn(41);
+
+  wait(100,msec);
+
   AutonDriveSpeed(100);
-  intake.spin(reverse, 100, pct); //Score and push [CHECKPOINT 1]
+
+  RobotDriveRev(400);
   wait(100,msec);
   RobotDriveFwd(200);
   wait(100,msec);
-  RobotDriveRev(850); //Drive back to middle of the two tiles, ok to knock off the other triball
-  intake.stop();
+  RobotRightTurn(5);
+  wait(100,msec);
+  RobotDriveRev(400);
+
   AutonDriveSpeed(40);
-  RobotRightTurn(865); //Turn 135 deg clockwise
-  wait(250,msec);
+  //vertwings.set(0);
+
+  wait(100,msec);
+  RobotDriveFwd(70);
+  wait(100,msec);
+  RobotRightTurn(88);
+  wait(100,msec);
+
+  RobotDriveFwd(250);
+
   AutonDriveSpeed(30);
-  intake.spin(fwd, 100, pct); //Intake triball and don't touch the bar
-  RobotDriveFwd(695);
-  wait(350,msec);
-  AutonDriveSpeed(25); //slow down to make it more accurate
-  RobotDriveRev(350); //Go back same distance, stay on double line
-  wait(250,msec);
-  intake.stop();
-  AutonDriveSpeed(25); //slow down the speed of turning back
-  RobotLeftTurn(850); //Turn 135 deg counterclockwise
-  wait(250,msec);
-  AutonDriveSpeed(100);
-  intake.spin(reverse, 100, pct); //Score triball
-  wait(250,msec);
-  RobotDriveFwd(1300);
+
+  RobotDriveRev(2600,3000);
+
   wait(100,msec);
-  AutonDriveSpeed(25);
-  RobotRightTurn(10);
-  RobotDriveRev(750); //Drive back
-  intake.stop();
-  //from here on is collecting the third triball
-  RobotLeftTurn(525);
-  wait(100,msec);
-  intake.spin(fwd, 100, pct); //intake triball on the double white lines
-  wait(250,msec);
-  RobotDriveFwd(450);
-  wait(100,msec);
-  intake.stop();
-  RobotDriveRev(300);
+  vertwings.set(1);
   wait(200,msec);
-  RobotRightTurn(573);
+
+  RobotLeftTurn(8);
+}
+
+void auton2() { // Elims R 5 Tri -> if we're doing a long drive we should change the time variable
+  AutonDriveSpeed(80);
+
+  intake.spin(fwd, 100, pct); //get the triball under the elevation bar
+  wait(100,msec);
+  RobotDriveFwd(80);
+  wait(500,msec);
+  intake.stop();  
+
+
+  AutonDriveSpeed(80);//drive near the matchload bar
+  RobotDriveRev(1900,1500);
+  wait(100,msec);
+  RobotLeftTurn(41);
+  wait(100,msec);
+
+  //take ball outta matchload zone on the way
+  RobotDriveRev(850);
   AutonDriveSpeed(20);
-  RobotDriveFwd(100);
-  wait(150,msec);
-  intake.spin(reverse, 100, pct); //SCORE IT PLS
-  wait(200,msec);
+  RobotDriveRev(530);
+  AutonDriveSpeed(70);
+  wait(100,msec);
+
+  RobotLeftTurn(40);//get perpendicular to the goal
+  wait(100,msec);
+
   AutonDriveSpeed(100);
-  RobotDriveFwd(1000);
+
+  RobotDriveRev(600);
+  wait(100,msec);
+  RobotDriveFwd(400);
+  wait(100,msec);
+
+  RobotRightTurn(175); //spit out the triball
+  intake.spin(reverse, 100, pct);
+  wait(400,msec);
+  intake.stop();
+  wait(100,msec);
+
+  RobotLeftTurn(185);
+  wait(100,msec);
+  RobotRightTurn(6);
+  wait(10,msec);
+
+    
+  AutonDriveSpeed(100);
+  RobotDriveRev(600);
+  wait(100,msec);
+  AutonDriveSpeed(30);
+
+  RobotDriveFwd(230);
+
+  AutonDriveSpeed(100);
+  wait(100,msec); // get the third triball thats the safest
+  RobotRightTurn(85);
+  wait(100,msec);
+  RobotDriveRev(300);
+  wait(100,msec);
+  RobotDriveFwd(200);
+  wait(100,msec);
+
+  RobotRightTurn(15);
+
+  intake.spin(fwd, 100, pct);
+  RobotDriveFwd(2280,2000);
+  wait(100,msec);
+  intake.stop(hold);
+
+  AutonDriveSpeed(100);
+  RobotDriveRev(100);//score third triball
+  wait(100,msec);
+  RobotRightTurn(120);
+  wait(100,msec);
+  RobotDriveFwd(500);
+  wait(100,msec);
+  RobotRightTurn(85);
+  wait(100,msec);
+
+  RobotDriveRev(30,200);
+  intake.spin(reverse, 100, pct);
+  wait(500,msec);
+  intake.stop();
+
+  RobotDriveFwd(1200);
+}
+
+void auton3() { //Elims
+  AutonDriveSpeed(50);
+  RobotDriveFwd(2700,1000); //Drive to the middle of the double white line
+  wait(250,msec);
+  RobotRightTurn(86); //Turn 90 deg clockwise
+  wait(250,msec);
+
+  AutonDriveSpeed(100);
+
+  intake.spin(reverse, 100, pct); //Score and push [CHECKPOINT 1]
+  wait(500,msec);
+  intake.stop();
+
+  RobotDriveRev(200);
+  wait(100,msec);
+
+  RobotRightTurn(176);
+  wait(100,msec);
+
+  AutonDriveSpeed(50);
+  RobotDriveRev(425);
+  wait(300,msec);
+
+  RobotDriveFwd(100);
+  wait(100,msec);
+
+  /*AutonDriveSpeed(50);
+  
+  RobotLeftTurn(25);
+  wait(250,msec);
+
+  AutonDriveSpeed(35);
+
+  intake.spin(reverse, 100, pct);
+  RobotDriveFwd(1200,1000);
+  wait(450,msec);
+  intake.stop();
+  wait(350,msec);
+
+  AutonDriveSpeed(50);
+
+  RobotDriveRev(750);
+  wait(250,msec);
+
+  AutonDriveSpeed(50);
+
+  RobotLeftTurn(155);
+  wait(250,msec);
+
+  AutonDriveSpeed(70);
+
+  intake.spin(fwd, 70, pct);
+  wait(250,msec);
+  RobotDriveFwd(810);
+  wait(100,msec);
+
+  AutonDriveSpeed(100);
+
+  RobotDriveRev(900);
+  intake.stop();
+
+  AutonDriveSpeed(80);
+
+  RobotLeftTurn(90);
+  wait(100,msec);
+
+  intake.spin(reverse, 100, pct);
+  wait(250,msec);
+  AutonDriveSpeed(25);
+  RobotDriveFwd(750);
   wait(100,msec);
   intake.stop();
-  RobotDriveRev(500);
+
+  AutonDriveSpeed(25);
+  RobotDriveRev(650);
+  wait(200,msec);
+
+  RobotRightTurn(85);
+  wait(200,msec);
+  AutonDriveSpeed(20);
+
+  intake.spin(fwd, 100, pct);
+  wait(200,msec);
+
+  AutonDriveSpeed(100);
+
+  RobotDriveFwd(1000,1000);
+  wait(100,msec);
+  intake.stop();
+
+  RobotDriveRev(400);*/
 }
 
 void auton4() { // Auton Skills 190+
-  AutonDriveSpeed(80);
-  RobotDriveFwd(1); //Drive behind the double white line
-  wait(250,msec);
-  RobotLeftTurn(1); //Turn 90 deg counterclockwise
-  wait(250,msec);
-  AutonDriveSpeed(100);
-  intake.spin(reverse, 100, pct); //Score and push
-  RobotDriveFwd(1);
-  wait(100,msec);
-  RobotDriveRev(1); //Drive back to any reasonable point
-  intake.stop();
-  AutonDriveSpeed(80);
-  RobotRightTurn(1); //Turn 135 deg clockwise
-  wait(250,msec);
-  intake.spin(fwd, 100, pct); //Intake triball and DON'T CROSS THE DOUBLE WHITE LINE
-  RobotDriveFwd(1);
-  wait(250,msec);
-  RobotDriveRev(1); //Go back same distance, stay on double line
-  wait(250,msec);
-  RobotLeftTurn(1); //Turn 135 deg counterclockwise
-  wait(250,msec);
-  AutonDriveSpeed(100);
-  intake.spin(reverse, 100, pct); //Score triball
-  RobotDriveFwd(1);
-  wait(100,msec);
-  RobotDriveRev(1); //Drive back and prepare for driver practice
+
 }

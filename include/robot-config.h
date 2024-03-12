@@ -14,8 +14,9 @@ extern motor_group L;
 extern motor_group R;
 extern motor intake;
 extern motor catapult;
-extern pneumatics wings;
-extern pneumatics blocker;
+extern pneumatics wedgewings;
+extern pneumatics vertwings;
+extern pneumatics hang;
 extern inertial inert;
 
 /**
@@ -23,4 +24,4 @@ extern inertial inert;
  * 
  * This should be called at the start of your int main function.
  */
-void  vexcodeInit( void );
+void  vexcodeInit(void);

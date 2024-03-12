@@ -3,8 +3,7 @@
 #include <cstring>
 #include <string.h>
 #include "vex.h"
-#include "pre-auton.hpp"
-#include "pid.hpp"
+#include "functions.hpp"
 #include "autons.hpp"
 
 using namespace vex;
@@ -17,14 +16,14 @@ void pre_auton(void) {
   vexcodeInit();
   Inertial();
   AutonSelector();
+  L.setStopping(coast);
+  R.setStopping(coast);
 }
 
-
 void autonomous(void) {  
-  L.setPosition(0,deg);
-  R.setPosition(0,deg);
-
-  travel(100,0);
+  L.setStopping(brake);
+  R.setStopping(brake);
+  PidOn = true;
   if (display == 1) {auton1();}
   if (display == 2) {auton2();}
   if (display == 3) {auton3();}
@@ -39,15 +38,15 @@ void autonomous(void) {
 // ........................................................................
 
 bool CatapultDown = false;
-bool IntakeTog = false;
-bool OutakeTog = false;
-bool WingsTog = false;
+bool WedgeWingsTog = false;
+bool VertWingsTog = false;
+bool Hang = false;
 
 // ........................................................................
 // Temperature Check
 // ........................................................................
 
-void TemperatureCheck(){
+void TemperatureCheck() {
 
   bool flhot = false;
   bool mlhot = false;
@@ -82,18 +81,9 @@ void TemperatureCheck(){
 }
 
 void usercontrol(void) {
-
-  // Set all motors back to 100 pct.
-    fl.setVelocity(100, percent);
-    ml.setVelocity(100, percent);
-    bl.setVelocity(100, percent);
-
-    fr.setVelocity(100, percent);
-    mr.setVelocity(100, percent);
-    br.setVelocity(100, percent);
-
-
   asian.Screen.clearScreen();
+  L.setStopping(coast);
+  R.setStopping(coast);
 
   while (1) {
     
@@ -101,16 +91,16 @@ void usercontrol(void) {
     double arcadeleftValue = asian.Axis3.position();
     double arcaderightValue = asian.Axis1.position();
 
-    double arcadeleftPower = (0.7*(arcadeleftValue + arcaderightValue));
-    double arcaderightPower = (0.7*(arcadeleftValue - arcaderightValue));
+    double arcadeleftPower = ((arcadeleftValue + arcaderightValue));
+    double arcaderightPower = ((arcadeleftValue - arcaderightValue));
 
-    fl.spin(fwd, arcadeleftPower, percent);
-    ml.spin(fwd, arcadeleftPower, percent);
-    bl.spin(fwd, arcadeleftPower, percent);
+    L.spin(fwd, (0.8*arcadeleftPower), percent);
+    R.spin(fwd, (0.8*arcaderightPower), percent);
 
-    fr.spin(fwd, arcaderightPower, percent);
-    mr.spin(fwd, arcaderightPower, percent);
-    br.spin(fwd, arcaderightPower, percent);
+    if (arcadeleftPower > arcaderightPower || arcadeleftPower < arcaderightPower) {
+      arcadeleftPower = 1.25*arcadeleftPower;
+      arcaderightPower = 1.25*arcaderightPower;
+    }
 
     // Catapult
     if (asian.ButtonL1.pressing()) {
@@ -123,7 +113,7 @@ void usercontrol(void) {
     }
 
     // Catapult Down
-    if (asian.ButtonR2.pressing()){
+    if (asian.ButtonL2.pressing()) {
       catapult.spinToPosition(340, deg);
       wait(10, msec);
     }
@@ -133,60 +123,67 @@ void usercontrol(void) {
     }
 
     // Intake
-    if (asian.ButtonR1.pressing()){
-      if (!IntakeTog) {
-        intake.spin(fwd, 80, pct);
-        wait(10, msec);
-        IntakeTog = true;
-      }
-      else if (IntakeTog) {
-        intake.stop(coast);
-        wait(10, msec);
-        IntakeTog = false;
-      }
+    if (asian.ButtonR1.pressing()) {
+      intake.spin(fwd, 100, pct);
     }
-
-    //Outake
-    if (asian.ButtonR2.pressing()){
-      if (!OutakeTog) {
-        intake.spin(reverse, 80, pct);
-        wait(10, msec);
-        OutakeTog = true;
-      }
-      else if (OutakeTog) {
-        intake.stop(coast);
-        wait(10, msec);
-        OutakeTog = false;
-      }
-    }
-
-    //Wings
-    if (asian.ButtonB.pressing()){
-      if (!WingsTog) {
-        wings.set(1);
-        wait(10, msec);
-        WingsTog = true;
-      }
-      else if (WingsTog) {
-        wings.set(0);
-        wait(10, msec);
-        WingsTog = false;
-      }
-    }
-
-    //Blocker
-    if (asian.ButtonX.pressing()) {
-      blocker.set(1);
-      wait(10, msec);
+    else if (asian.ButtonR2.pressing()) {
+      intake.spin(reverse, 100, pct);
     }
     else {
-      blocker.set(0);
-      wait(10, msec);
+    intake.stop(coast);
     }
 
-    //TemperatureCheck
+    // Wings
+    if (asian.ButtonB.pressing()) {
+      if (!WedgeWingsTog) {
+        wedgewings.set(1);
+        wait(100, msec);
+        WedgeWingsTog = true;
+      }
+      else if (WedgeWingsTog) {
+        wedgewings.set(0);
+        wait(100, msec);
+        WedgeWingsTog = false;
+      }
+    }
+
+    if (asian.ButtonX.pressing()) {
+      if (!VertWingsTog) {
+        vertwings.set(1);
+        wait(100, msec);
+        VertWingsTog = true;
+      }
+      else if (VertWingsTog) {
+        vertwings.set(0);
+        wait(100, msec);
+        VertWingsTog = false;
+      }
+    }
+
+    // Hang
+    if (asian.ButtonUp.pressing()) {
+      if (!Hang) {
+        hang.set(1);
+        wait(10, msec);
+        Hang = true;
+      }
+    }
+
+    if (asian.ButtonDown.pressing()) {
+      if (Hang) {
+        hang.set(0);
+        wait(10, msec);
+        Hang = false;
+      }
+    }
+
+    if(asian.ButtonY.pressing()){
+      auton2();
+    }
+
+    // TemperatureCheck
     TemperatureCheck();
-    wait(20, msec);      
+    wait(10, msec);    
   } 
 }
 

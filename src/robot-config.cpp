@@ -19,9 +19,10 @@ motor_group L = motor_group(ml, bl, fl);
 motor_group R = motor_group(mr, br, fr);
 motor intake = motor(PORT17, ratio6_1, false);
 motor catapult = motor(PORT4, ratio36_1, false);
-pneumatics wings = pneumatics(Brain.ThreeWirePort.A);
-pneumatics blocker = pneumatics(Brain.ThreeWirePort.B);
-inertial inert = inertial(PORT20);
+pneumatics wedgewings = pneumatics(Brain.ThreeWirePort.G);
+pneumatics vertwings = pneumatics(Brain.ThreeWirePort.D);
+pneumatics hang = pneumatics(Brain.ThreeWirePort.C);
+inertial inert = inertial(PORT15);
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable
