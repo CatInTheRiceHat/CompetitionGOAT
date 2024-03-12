@@ -56,12 +56,12 @@ void usercontrol(void) {
     double arcadeleftPower = ((arcadeleftValue + arcaderightValue));
     double arcaderightPower = ((arcadeleftValue - arcaderightValue));
 
-    L.spin(fwd, (0.8*arcadeleftPower), percent);
-    R.spin(fwd, (0.8*arcaderightPower), percent);
+    L.spin(fwd, (0.85*arcadeleftPower), percent);
+    R.spin(fwd, (0.85*arcaderightPower), percent);
 
     if (arcadeleftPower > arcaderightPower || arcadeleftPower < arcaderightPower) {
-      arcadeleftPower = 1.25*arcadeleftPower;
-      arcaderightPower = 1.25*arcaderightPower;
+      arcadeleftPower = 1.17*arcadeleftPower;
+      arcaderightPower = 1.17*arcaderightPower;
     }
 
     // Catapult
