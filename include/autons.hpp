@@ -142,7 +142,7 @@ void auton2() { // Elims R 2.5 Tri -> if we're doing a long drive we should chan
   RobotDriveFwd(1200);
 }
 
-void auton3() { //Elims 4 Tri Right
+void auton3() { //Elims R 4 Tri
   AutonDriveSpeed(50);
   RobotDriveFwd(2700,1000); //Drive to the middle of the double white line
   wait(250,msec);
@@ -235,6 +235,10 @@ void auton3() { //Elims 4 Tri Right
   RobotDriveRev(400);*/
 }
 
-void auton4() { // Auton Skills 190+ RIP
+void auton4() { //Elims L 1 Tri + Goal Rush
+
+}
+
+void auton5() { //Auton Skills
 
 }

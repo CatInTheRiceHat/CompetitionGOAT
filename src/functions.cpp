@@ -17,9 +17,11 @@ void describe(int number) {
   else if (number == 2) {asian.Screen.print("N/A");}
   else if (number == 3) {asian.Screen.print("Elims R 4 Tri");}
   else if (number == 4) {asian.Screen.print("Elims L 1 Tri + Goal Rush");}
+  else if (number == 5) {asian.Screen.print("Auton Skills");}
+
 }
 
-int autons = 4;
+int autons = 5;
 int display = 0;
 
 void AutonSelector() {
