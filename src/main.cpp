@@ -34,51 +34,13 @@ void autonomous(void) {
 }
 
 // ........................................................................
-// Driver Phase Code
+// Driver Control
 // ........................................................................
 
 bool CatapultDown = false;
 bool WedgeWingsTog = false;
 bool VertWingsTog = false;
 bool Hang = false;
-
-// ........................................................................
-// Temperature Check
-// ........................................................................
-
-void TemperatureCheck() {
-
-  bool flhot = false;
-  bool mlhot = false;
-  bool blhot = false;
-  bool frhot = false;
-  bool mrhot = false;
-  bool brhot = false;
-
-  if (fl.temperature(fahrenheit) >= 120) {flhot = true;}
-  if (ml.temperature(fahrenheit) >= 120) {mlhot = true;}
-  if (bl.temperature(fahrenheit) >= 120) {blhot = true;}
-
-  if (fr.temperature(fahrenheit) >= 120) {frhot = true;}
-  if (mr.temperature(fahrenheit) >= 120) {mrhot = true;}
-  if (br.temperature(fahrenheit) >= 120) {brhot = true;}
-
-  if (flhot || mlhot || blhot || frhot || mrhot || brhot) {
-    asian.Screen.setCursor(4,4);
-    std::string HotSequence = "Motor ";
-
-    if (flhot){HotSequence += "Fl is HOT!";}
-    if (mlhot){HotSequence += "Ml is HOT!";}
-    if (blhot){HotSequence += "Bl is HOT!";}
-
-    if (frhot){HotSequence += "Fr is HOT!";}
-    if (mrhot){HotSequence += "Mr is HOT!";}
-    if (brhot){HotSequence += "Br is HOT!";}
-
-    asian.Screen.print(HotSequence.c_str());
-    asian.rumble(rumbleLong);
-  }
-}
 
 void usercontrol(void) {
   asian.Screen.clearScreen();
@@ -175,10 +137,6 @@ void usercontrol(void) {
         wait(10, msec);
         Hang = false;
       }
-    }
-
-    if(asian.ButtonY.pressing()){
-      auton2();
     }
 
     // TemperatureCheck

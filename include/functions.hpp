@@ -20,5 +20,6 @@ void RobotLeftTurn(double Turn);
 void RobotRightTurn(double Turn);
 void AutonDriveSpeed(double Speed);
 int pid(double target);
+void TemperatureCheck();
 
 #endif // FUNCTIONS_HPP

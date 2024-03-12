@@ -1,3 +1,7 @@
+#include <iostream>
+#include "stdarg.h"
+#include <cstring>
+#include <string.h>
 #include "vex.h"
 
 using namespace vex;
@@ -163,8 +167,6 @@ void AutonDriveSpeed(double Speed){
 
 bool PidOn = false;
 
-//
-
 int pid(double target) {
   double kP = 0.00085;//0.015 //0.002525
   double kI = 0.0;//0.05 //0.027
@@ -219,4 +221,42 @@ int pid(double target) {
   L.stop();
   R.stop();
   return 0;
+}
+
+// ........................................................................
+// Temperature Check
+// ........................................................................
+
+void TemperatureCheck() {
+
+  bool flhot = false;
+  bool mlhot = false;
+  bool blhot = false;
+  bool frhot = false;
+  bool mrhot = false;
+  bool brhot = false;
+
+  if (fl.temperature(fahrenheit) >= 120) {flhot = true;}
+  if (ml.temperature(fahrenheit) >= 120) {mlhot = true;}
+  if (bl.temperature(fahrenheit) >= 120) {blhot = true;}
+
+  if (fr.temperature(fahrenheit) >= 120) {frhot = true;}
+  if (mr.temperature(fahrenheit) >= 120) {mrhot = true;}
+  if (br.temperature(fahrenheit) >= 120) {brhot = true;}
+
+  if (flhot || mlhot || blhot || frhot || mrhot || brhot) {
+    asian.Screen.setCursor(4,4);
+    std::string HotSequence = "Motor ";
+
+    if (flhot){HotSequence += "Fl is HOT!";}
+    if (mlhot){HotSequence += "Ml is HOT!";}
+    if (blhot){HotSequence += "Bl is HOT!";}
+
+    if (frhot){HotSequence += "Fr is HOT!";}
+    if (mrhot){HotSequence += "Mr is HOT!";}
+    if (brhot){HotSequence += "Br is HOT!";}
+
+    asian.Screen.print(HotSequence.c_str());
+    asian.rumble(rumbleLong);
+  }
 }
