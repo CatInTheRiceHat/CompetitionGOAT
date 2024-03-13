@@ -46,6 +46,7 @@ void usercontrol(void) {
   asian.Screen.clearScreen();
   L.setStopping(coast);
   R.setStopping(coast);
+  PidOn = false;
 
   while (1) {
     
