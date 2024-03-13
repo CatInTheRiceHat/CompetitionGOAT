@@ -57,12 +57,12 @@ void usercontrol(void) {
     double arcadeleftPower = ((arcadeleftValue + arcaderightValue));
     double arcaderightPower = ((arcadeleftValue - arcaderightValue));
 
-    L.spin(fwd, (0.8*arcadeleftPower), percent);
-    R.spin(fwd, (0.8*arcaderightPower), percent);
+    L.spin(fwd, (0.9*arcadeleftPower), percent);
+    R.spin(fwd, (0.9*arcaderightPower), percent);
 
     if (arcadeleftPower > arcaderightPower || arcadeleftPower < arcaderightPower) {
-      arcadeleftPower = 1.25*arcadeleftPower;
-      arcaderightPower = 1.25*arcaderightPower;
+      arcadeleftPower = 1.11*arcadeleftPower;
+      arcaderightPower = 1.11*arcaderightPower;
     }
 
     // Catapult
@@ -127,12 +127,12 @@ void usercontrol(void) {
     if (asian.ButtonL1.pressing()) {
       if (!Hang) {
         hang.set(1);
-        wait(100, msec);
+        wait(500, msec);
         Hang = true;
       }
       else if (Hang) {
         hang.set(0);
-        wait(100, msec);
+        wait(500, msec);
         Hang = false;
       }
     }

@@ -47,13 +47,16 @@ void auton1() { //Quals L AWP 1 Tri
 
   AutonDriveSpeed(30);
 
-  RobotDriveRev(2600,3000);
+  RobotDriveRev(1300,2000);
+  wait(250,msec);
 
-  wait(100,msec);
+  RobotRightTurn(88);
+
+  /*wait(100,msec);
   vertwings.set(1);
   wait(200,msec);
 
-  RobotLeftTurn(8);
+  RobotLeftTurn(8);*/
 }
 
 void auton2() { // Elims R 2.5 Tri -> if we're doing a long drive we should change the time variable
