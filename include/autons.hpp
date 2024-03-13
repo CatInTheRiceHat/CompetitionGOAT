@@ -145,9 +145,9 @@ void auton2() { // Elims R 2.5 Tri -> if we're doing a long drive we should chan
 void auton3() { //Elims R 4 Tri
   AutonDriveSpeed(50);
   RobotDriveFwd(2500,1000); //Drive to the middle of the double white line
-  wait(250,msec);
-  RobotRightTurn(75); //Turn 90 deg clockwise
-  wait(250,msec);
+  wait(150,msec);
+  RobotRightTurn(79); //Turn 90 deg clockwise
+  wait(150,msec);
 
   AutonDriveSpeed(100);
 
@@ -158,82 +158,77 @@ void auton3() { //Elims R 4 Tri
   RobotDriveRev(200);
   wait(100,msec);
 
-  RobotRightTurn(170);
+  RobotRightTurn(180);
   wait(100,msec);
 
-  AutonDriveSpeed(50);
-  RobotDriveRev(425);
-  wait(300,msec);
+  AutonDriveSpeed(100);
+
+  RobotDriveRev(525);
+  wait(100,msec);
 
   RobotDriveFwd(100);
   wait(100,msec);
 
   AutonDriveSpeed(50);
   
-  RobotLeftTurn(25);
-  wait(250,msec);
+  RobotLeftTurn(20);
+  wait(150,msec);
 
-  AutonDriveSpeed(35);
+  AutonDriveSpeed(40);
 
   intake.spin(fwd, 100, pct);
-  RobotDriveFwd(1200,1000);
-  wait(450,msec);
+  RobotDriveFwd(1300,1300);
+  wait(650,msec);
   intake.stop();
-  wait(350,msec);
+  wait(300,msec);
 
   AutonDriveSpeed(50);
 
-  RobotDriveRev(500);
-  wait(250,msec);
+  RobotDriveRev(900,1000);
+  wait(150,msec);
 
-  AutonDriveSpeed(50);
+  AutonDriveSpeed(80);
 
-  RobotLeftTurn(155);
-  wait(250,msec);
-
-  AutonDriveSpeed(70);
-
-  intake.spin(reverse, 70, pct);
-  wait(250,msec);
-  RobotDriveFwd(810);
-  wait(100,msec);
-  intake.stop();
+  RobotLeftTurn(165);//155
+  wait(150,msec);
 
   AutonDriveSpeed(100);
-
-  RobotDriveRev(400,1000);
-  wait(100,msec);
-
- /*AutonDriveSpeed(80);
-
-  RobotLeftTurn(75);
-  wait(100,msec);
-
-  intake.spin(fwd, 100, pct);
-  wait(250,msec);
-  AutonDriveSpeed(25);
-  RobotDriveFwd(350);
-  wait(100,msec);
-  intake.stop();
-
-  AutonDriveSpeed(25);
-  RobotDriveRev(600);
-  wait(200,msec);
-
-  RobotRightTurn(75);
-  wait(200,msec);
-  AutonDriveSpeed(20);
 
   intake.spin(reverse, 100, pct);
-  wait(200,msec);
+  wait(450,msec);
+  /*RobotDriveFwd(810);
+  wait(100,msec);*/
+  intake.stop();
 
-  AutonDriveSpeed(100);
+  wait(100,msec);
+  RobotDriveRev(400);
 
-  RobotDriveFwd(1000,1000);
+  //AutonDriveSpeed(100);
+
+  wait(150,msec);
+  RobotLeftTurn(118);
+
+  intake.spin(fwd, 100, pct);
+  wait(250,msec);
+  AutonDriveSpeed(40);
+  RobotDriveFwd(525,700);
   wait(100,msec);
   intake.stop();
 
-  RobotDriveRev(400);*/
+  /*RobotDriveRev(100);
+  wait(200,msec);*/
+
+  AutonDriveSpeed(100);
+
+  RobotLeftTurn(52);
+  wait(100,msec);
+  
+  vertwings.set(1);
+  wait(100,msec);
+  RobotDriveRev(1500,1500);
+  wait(100,msec);
+  RobotDriveFwd(200);
+  vertwings.set(0);
 
 }
 
